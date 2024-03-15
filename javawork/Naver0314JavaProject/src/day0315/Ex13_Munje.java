@@ -17,14 +17,16 @@ public class Ex13_Munje {
 		
 		Scanner sc=new Scanner(System.in);
 		int score;
+		
+		
 //		String msg;
 //		
 //		System.out.println("점수는?");
 //		score=sc.nextInt();
 //		
-//		msg=score>90 ? "참 잘했어요!!" :
-//			score>80 ? "수고했어요!" :
-//			score>70 ? "조금 더 노력하세요!" :
+//		msg=score>=90 ? "참 잘했어요!!" :
+//			score>=80 ? "수고했어요!" :
+//			score>=70 ? "조금 더 노력하세요!" :
 //			"재시험입니다!";
 //		System.out.println("msg = "+msg);
 		
@@ -37,9 +39,9 @@ public class Ex13_Munje {
 //		System.out.println("점수는?");
 //		score=sc.nextInt();
 //		
-//		msg=score>90 ? msg1 :
-//			score>80 ? msg2 :
-//			score>70 ? msg3 :
+//		msg=score>=90 ? msg1 :
+//			score>=80 ? msg2 :
+//			score>=70 ? msg3 :
 //			msg4;
 		
 		String msg;
@@ -47,9 +49,9 @@ public class Ex13_Munje {
 		System.out.println("점수는?");
 		score=sc.nextInt();
 		
-		msg=score>90 ? args[0] :
-			score>80 ? args[1] :
-			score>70 ? args[2] :
+		msg=score>=90 ? args[0] :
+			score>=80 ? args[1] :
+			score>=70 ? args[2] :
 			args[3];
 			
 		System.out.println("msg = "+msg);
