@@ -17,17 +17,32 @@ public class Ex13_Munje {
 		
 		Scanner sc=new Scanner(System.in);
 		int score;
-		String msg;
+//		String msg;
+//		
+//		System.out.println("점수는?");
+//		score=sc.nextInt();
+//		
+//		msg=score>90 ? "참 잘했어요!!" :
+//			score>80 ? "수고했어요!" :
+//			score>70 ? "조금 더 노력하세요!" :
+//			"재시험입니다!";
+//		System.out.println("msg = "+msg);
+		
+		String msg1,msg2,msg3,msg4,msg;
+		msg1="참 잘했어요!!";
+		msg2="수고했어요!";
+		msg3="조금 더 노려하세요!";
+		msg4="재시험입니다!";
 		
 		System.out.println("점수는?");
 		score=sc.nextInt();
 		
-		msg=score>90 ? "참 잘했어요!!" :
-			score>80 ? "수고했어요!" :
-			score>70 ? "조금 더 노력하세요!" :
-			"재시험입니다!";
-		System.out.println("msg ="+msg);
-		
+		msg=score>90 ? msg1 :
+			score>80 ? msg2 :
+			score>70 ? msg3 :
+			msg4;
+			
+		System.out.println("msg = "+msg);
 
 	}
 
