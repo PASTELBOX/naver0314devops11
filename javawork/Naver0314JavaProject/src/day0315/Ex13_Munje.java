@@ -28,19 +28,29 @@ public class Ex13_Munje {
 //			"재시험입니다!";
 //		System.out.println("msg = "+msg);
 		
-		String msg1,msg2,msg3,msg4,msg;
-		msg1="참 잘했어요!!";
-		msg2="수고했어요!";
-		msg3="조금 더 노려하세요!";
-		msg4="재시험입니다!";
+//		String msg1,msg2,msg3,msg4,msg;
+//		msg1="참 잘했어요!!";
+//		msg2="수고했어요!";
+//		msg3="조금 더 노려하세요!";
+//		msg4="재시험입니다!";
+//		
+//		System.out.println("점수는?");
+//		score=sc.nextInt();
+//		
+//		msg=score>90 ? msg1 :
+//			score>80 ? msg2 :
+//			score>70 ? msg3 :
+//			msg4;
+		
+		String msg;
 		
 		System.out.println("점수는?");
 		score=sc.nextInt();
 		
-		msg=score>90 ? msg1 :
-			score>80 ? msg2 :
-			score>70 ? msg3 :
-			msg4;
+		msg=score>90 ? args[0] :
+			score>80 ? args[1] :
+			score>70 ? args[2] :
+			args[3];
 			
 		System.out.println("msg = "+msg);
 
