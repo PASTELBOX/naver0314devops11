@@ -17,7 +17,7 @@ public class Ex8_Munje {
 		
 		System.out.println("당신의 이름은?");
 		name=sc.nextLine();
-		System.out.println("당신읜 핸드폰은?");
+		System.out.println("당신의 핸드폰은?");
 		hp=sc.nextLine();
 		System.out.println("당신이 태어난 년도는?");
 		birthYear=sc.nextInt();
@@ -25,11 +25,16 @@ public class Ex8_Munje {
 		//System.out.println("당신의 나이는?");
 		//age=sc.nextInt();
 		
+		//나이 계산
+		age=2024-birthYear;
+		
 		System.out.println("이름:"+name);
 		System.out.println("핸드폰:"+hp);
 		System.out.printf("태어난년도:%d년\n",birthYear);
-		System.out.printf("나이:%d세",(2024-birthYear));
-		//System.out.printf("나이:%d세",age);
+		//System.out.printf("나이:%d세",(2024-birthYear));
+		System.out.printf("나이:%d세",age);
+		//System.out.println("태어난 년도:"+birthYear);
+		//System.out.println("나이:"+age);
 	}
 
 }
