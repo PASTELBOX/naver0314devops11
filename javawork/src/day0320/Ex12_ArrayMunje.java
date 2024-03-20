@@ -35,18 +35,17 @@ public class Ex12_ArrayMunje {
 		for(int i=0;i<inwon;i++)
 		{
 			System.out.println("이름, 국어점수, 영어점수를 입력");
-			name[i]=sc.nextLine();
-			kor[i]=Integer.parseInt(sc.nextLine());
-			eng[i]=Integer.parseInt(sc.nextLine());
-			System.out.println();
+			name[i]=sc.next();
+			kor[i]=sc.nextInt();
+			eng[i]=sc.nextInt();
 			tot[i]=kor[i]+eng[i];
 
 		}
 		
-		for(int i=0;i<=inwon;i++)
+		for(int i=0;i<inwon;i++)
 		{
 			rank[i]=1;
-			for(int j=0;j<=inwon;j++)
+			for(int j=0;j<inwon;j++)
 			{
 				if(tot[i]<tot[j])
 				{
