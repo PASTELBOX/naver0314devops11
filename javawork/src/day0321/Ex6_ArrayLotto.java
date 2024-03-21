@@ -7,8 +7,8 @@ public class Ex6_ArrayLotto {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner sc=new Scanner(System.in);
-		int money;
 		int []lotto=new int[6];
+		int money;
 		/*
 		 * money를 입력하면 해당 횟수만큼 로또 구하기
 		 * 로또 : 1~45까지의 중복되지 않은 숫자
@@ -46,16 +46,17 @@ public class Ex6_ArrayLotto {
 					{
 						lotto[i]=(int)(Math.random()*45)+1;
 						//중복숫자 체크
-						for(int j=0;j<1;j++)
+						for(int j=0;j<i;j++)
 						{
 							if(lotto[i]==lotto[j])
 							{
 								i--;
-								break;//두번째 for문 아래에 다른코드가 없으므로 continue대신 break써도 됨
+								break;//두번째 for문 아래에 다른코드가 없으므로 continue대신 break 써도 됨
 								//continue Loop;
 							}
 						}
 					}
+				
 				//오름차순 정렬
 				for(int i=0;i<lotto.length-1;i++)
 				{
@@ -69,8 +70,9 @@ public class Ex6_ArrayLotto {
 						}
 					}
 				}
+				
 				//출력
-				System.out.printf("%2d 회 : ",m+1);
+				System.out.printf("%2d 회 : ",m+1);	
 				for(int n:lotto)
 					System.out.printf("%3d",n);
 				System.out.println();
