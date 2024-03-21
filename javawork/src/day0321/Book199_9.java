@@ -46,12 +46,13 @@ public class Book199_9 {
 		//			}
 
 		Scanner sc=new Scanner(System.in);
-		int student = 0,best,avg=0,want;
+		int student = 0,best,want;
+		double avg=0;
+		int []score=new int[3];
 		Loop:
 			while(true) 
 			{
 
-				int []score=new int[student];
 				System.out.println("원하는 정보를 입력");
 				want=sc.nextInt();
 				switch(want) 
@@ -60,16 +61,16 @@ public class Book199_9 {
 				{
 					System.out.println("학생수를 입력");
 					student=sc.nextInt();
-					continue;
+					break;
 				}
 				case 2:
 				{
+					System.out.println("점수 입력");
 					for(int i=0;i<student;i++) 
 					{
-						System.out.println("점수 입력");
 						score[i]=sc.nextInt();
 					}
-					continue;
+					break;
 				}
 				case 3:
 				{
@@ -85,12 +86,11 @@ public class Book199_9 {
 							}
 						}
 					}
-					System.out.print("점수 리스트는 : ");
 					for(int i=0;i<score.length;i++)
 					{
-						System.out.printf("점수리스트는 : "+score[i]);
+						System.out.println("점수 리스트는 : "+score[i]);
 					}
-					continue;
+					break;
 
 				}
 				case 4:
@@ -102,7 +102,7 @@ public class Book199_9 {
 					}
 					System.out.println("분석 결과 최고 점수는"+best+"평균은"+avg);
 				}
-				continue;
+				break;
 				case 5:
 				{
 					break Loop;
@@ -110,7 +110,7 @@ public class Book199_9 {
 				default:
 				{
 					System.out.println("해당 번호와 연관된 정보가 없습니다.");
-					continue;
+					break;
 				}
 
 
