@@ -7,7 +7,7 @@ class Member
 	private String addr;
 
 	//생성자
-	Member()
+	public Member()
 	{
 		this("이상혁","010-9999-9999","서울");
 	}
@@ -20,7 +20,7 @@ class Member
 	{
 		this(name,hp,"강원도");
 	}
-	Member(String name,String hp,String addr)
+	public Member(String name,String hp,String addr)
 	{
 		this.name=name;
 		this.hp=hp;
@@ -40,6 +40,7 @@ class Member
 	{
 		this.addr=addr;
 	}
+	
 	//getter
 	public String getName()
 	{
