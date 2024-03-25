@@ -18,8 +18,8 @@ public class Ex1_DataType {
 		
 		System.out.println(flag);
 		System.out.println(flag2);
-		System.out.println(!flag);//!(not) : 반대로 출력, true
-		System.out.println(!flag2);
+		System.out.println(!flag);
+		System.out.println(!flag2);//!(not) : 반대로 출력, true
 		
 		// && : 둘다 true 일때만 true
 		// || : 둘중 하나만 true라도 결과는 true
