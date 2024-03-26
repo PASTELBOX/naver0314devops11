@@ -50,7 +50,7 @@ public class Ex9_Inheri {
 		dog1.writeAnimal();
 		dog1.play();
 		
-		System.out.println("==========");
+		System.out.println("===========");
 		//부모클래스로 선언, 자식클래스로 생성
 		//다형성이라고 한다
 		//오버라이드 메서드에 한해서만 호출이가능하다
