@@ -50,7 +50,7 @@ public class Ex6_List {
 		System.out.println("** 출력 3 **");
 		Iterator<String> iter=list1.iterator();
 		while(iter.hasNext())
-			System.out.println(iter.next());
+			System.out.println(iter.next());s
 		
 		
 		System.out.println("** 출력 4 **");
