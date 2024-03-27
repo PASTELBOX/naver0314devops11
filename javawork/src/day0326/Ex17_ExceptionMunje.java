@@ -46,7 +46,7 @@ public class Ex17_ExceptionMunje {
 			System.out.println("평균 : "+avg);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("파일이 없어요 : "+e.getMessage());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
