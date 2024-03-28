@@ -5,17 +5,14 @@ public class StudentDto {
 	private int age;
 	private int java;
 	private int spring;
-	private int html;
-	private int total;
-	private double avg;
-	private String grade;
-
+	private int html;	
+	
 	//디폴트 생성자
 	public StudentDto() {
 		super();
 	}
+	
 	//매개변수 있는 생성자
-
 	public StudentDto(String name, int age, int java, int spring, int html) {
 		super();
 		this.name = name;
@@ -66,50 +63,30 @@ public class StudentDto {
 		this.html = html;
 	}
 	
-	
-	//java+spring+html의 합을 반환하는 메서드(getTotal)
-	
+	//java+spring+html 의 합을 반환하는 메서드(getTotal)
 	public int getTotal()
 	{
-		return total=java+spring+html;
+		return java+spring+html;
 	}
 	
-	//getTotal()/3.0으로 나눠서 반환하는 메서드(getAvg)
-	
+	//getTotal()/3.0 으로 나눠서 반환하는 메서드 (getAvg)
 	public double getAvg()
 	{
-		return avg=total/3.0;
+		return getTotal()/3.0;
 	}
 	
-	//getAvg()의 값이 90이상이면 "*****",80이상이면 "****", 70이상이면 "***" 나머지는 "*"
+	//getAvg() 의 값이 90이상이면 "*****", 80 이상이면 "*****", 70이상이면 "***",나머지는 "*"
 	//반환하는 메서드 (getGrade)
-	
 	public String getGrade()
 	{
 		if(getAvg()>=90)
-		{
-			System.out.println("*****");
-		}
+			return "*****";
 		else if(getAvg()>=80)
-		{
-			System.out.println("****");
-		}
+			return "****";
 		else if(getAvg()>=70)
-		{
-			System.out.println("***");
-		}
+			return "***";
 		else
-			System.out.println("*");
-		return grade;
+			return "*";
+		
 	}
-	
-	
 }
-
-//*	1.학생정보추가 : 이름, 나이, 3과목 점수 입력
-//*	2.학생정보삭제 : 이름으로 찾아서 삭제 없을 경우 메세지 출력
-//*	3.전체요소출력 : 번호,이름,Java,Spring,HTML,총점,평균,등급 출력
-//*	4.평균으로검색 : 평균값을 입력하면 그 평균값 이상의 학생들을 출력
-//*	5.이름으로검색 : 입력한이름을 포함하고 있으면 출력(contains)
-//*	6.저장후종료
-//* 
