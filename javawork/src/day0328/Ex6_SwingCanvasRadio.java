@@ -77,7 +77,7 @@ public class Ex6_SwingCanvasRadio extends JFrame {
 	{
 		this.add("Center",draw);
 		//상단에 색상 라디오 버튼 추가
-		JPanel pTop=new JPanel();
+		JPanel pTop=new JPanel();//구성요소를 구성하고 레이아웃하는데 사용하는 것
 		ButtonGroup bg1=new ButtonGroup();
 		rbBox1=new JRadioButton("초록색");
 		bg1.add(rbBox1);

@@ -29,8 +29,8 @@ public class Ex5_SwingCanvas extends JFrame {
 		this.getContentPane().setBackground(new Color(255,255,255));//배경색 변경
 		//this.getContentPane().setBackground(Color.yellow);//배경색 변경
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//프레임 종료
-		this.initDesign();//각종 컴포넌트 생성
-		this.setVisible(true);
+		this.initDesign();//각종 컴포넌트 생성 초기화
+		this.setVisible(true);//프레임 표시
 	}
 	
 	//캔바스를 상속받는 내부클래스

@@ -15,7 +15,6 @@ public class Ex4_SwingButton extends JFrame {
 	JButton []btnArray=new JButton[6];//각 배열의 값 null
 	String []btnLabel= {"초록색","빨강색","분홍색","오렌지색","노랑색","랜덤색"};
 
-
 	public Ex4_SwingButton(String title)
 	{
 		super(title);
