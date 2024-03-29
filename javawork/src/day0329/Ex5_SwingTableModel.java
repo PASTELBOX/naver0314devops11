@@ -53,7 +53,7 @@ public class Ex5_SwingTableModel extends JFrame {
 		this.addStudentFile();
 		this.process();
 		
-		//삭제버튼 생성 미 이벤트
+		//삭제버튼 생성 및 이벤트
 		btnDelete=new JButton("학생정보 삭제하기");
 		this.add("South",btnDelete);
 		
