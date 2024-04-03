@@ -1,0 +1,259 @@
+--시퀀스 생성
+--기본 1부터 1씩 증가하는 시퀀스는 생략하고 기본명령어만 주면됨
+CREATE SEQUENCE SEQ1;
+
+--전체 시퀀스 조회
+SELECT * FROM SEQ;
+
+--다음 시퀀스값 발생 : NEXTVAL
+SELECT SEQ1.NEXTVAL FROM DUAL; --1씩 증가된 값이 발생한다
+
+--10부터 5씩 증가하는 시퀀스를 생성해보자, 캐시가 기본 20인데 없애보자
+CREATE SEQUENCE SEQ2 START WITH 10 INCREMENT BY 5 NOCACHE;
+
+--SEQ2값을 발생시켜보자
+SELECT SEQ2.NEXTVAL FROM DUAL;
+
+--1부터 3씩 증가, 캐시0, 맥스 100
+CREATE SEQUENCE SEQ3 START WITH 1 INCREMENT BY 3 NOCACHE MAXVALUE 100;
+
+--SEQ3 값을 발생시켜보자
+SELECT SEQ3.NEXTVAL FROM DUAL;
+
+--시퀀스도 제거
+DROP SEQUENCE SEQ1;
+DROP SEQUENCE SEQ2;
+DROP SEQUENCE SEQ3;
+
+--최종 테이블에서 사용할 시퀀스 생성(1부터 1씩증가(생략),CACHE 0)
+CREATE SEQUENCE SEQ_TEST NOCACHE;
+
+--연습용 테이블 생성
+CREATE TABLE HELLO (
+    IDX NUMBER(3) PRIMARY KEY,
+    IRUM VARCHAR2(20),
+    AGE NUMBER(3)
+);
+
+--테이블 구조 수정 : ALTER TABLE
+--IRUM의 길이를 20에서 30으로 수정해보자
+ALTER TABLE HELLO MODIFY IRUM VARCHAR2(30);
+
+--ADDR이라는 컬럼을 추가해보자(문자열 길이는 100)
+ALTER TABLE HELLO ADD ADR VARCHAR2(100);
+
+--AGE라는 컬럼을 제거해보자
+ALTER TABLE HELLO DROP COLUMN AGE;
+
+--컬럼명 변경(ADDR -> ADDRESS)
+ALTER TABLE HELLO RENAME COLUMN ADDR TO ADDRESS;
+
+--컬럼 두개 추가해보자
+ALTER TABLE HELLO ADD BLOOD VARCHAR2(3);
+ALTER TABLE HELLO ADD AGE NUMBER(3);
+
+--데이터를 추가해보자
+INSERT INTO HELLO (IRUM) VALUES ('lee'); --에러발생,IDX는 PK이므로 반드시 값을 넣어야한다
+
+INSERT INTO HELLO (IDX,IRUM) VALUES (SEQ_TEST.NEXTVAL,'lee');
+INSERT INTO HELLO (IDX,BLOOD,ADR) VALUES (SEQ_TEST.NEXTVAL,'AB','서울 역삼');
+
+--컬럼명 생략시 테이블의 컬럼 순서대로 모든값을 줘야한다
+INSERT INTO HELLO VALUES(SEQ_TEST.NEXTVAL,'이진','제주도 애월읍','O',23);
+
+--수정
+--이름이 '이진'인 사람의 혈액형을 B형으로 변경해보자
+UPDATE HELLO SET BLOOD='B' WHERE IRUM='이진';
+--IDX가 2인 사람의 IRUM,AGE를 수정해보자
+UPDATE HELLO SET IRUM='강호동',AGE=35 WHERE IDX=4;
+--IDX가 3인 사람의 ADDRESS,BLOOD,AGE의 값을 수정하세요
+UPDATE HELLO SET IRUM='LEE',AGE=45,BLOOD='O',ADR='서울 강남' WHERE IDX=3;
+
+--삭제
+DELETE FROM HELLO WHERE IDX=2;
+--AGE가 30이상인 데이터는 모두 삭제
+DELETE FROM HELLO WHERE AGE>=3;
+
+--테이블을 제거
+DROP TABLE HELLO;
+
+SELECT * FROM HELLO;
+
+----------------------------------------------------------
+--새로운 테이블 생성, 이번에는 각종 제약조건을 추가해서 생성해보자
+CREATE TABLE STUDENT (
+    NUM NUMBER(3) CONSTRAINT PK_NUM PRIMARY KEY,
+    STUNAME VARCHAR2(20) CONSTRAINT NN_NAME NOT NULL,
+    SCORE NUMBER(3) CONSTRAINT CK_SCORE CHECK(SCORE>=1 AND SCORE<=100),
+    BIRTHDAY DATE 
+);
+
+--INSERT로 데이터 추가를 하는데 각종 에러를 발생시켜보자
+INSERT INTO STUDENT (NUM,STUNAME) VALUES (1,'김미리');--OK
+
+--ORA-01400: NULL을 ("ANGEL"."STUDENT"."NUM") 안에 삽입할 수 없습니다
+INSERT INTO STUDENT(STUNAME,SCORE) VALUES ('이미자',45);--오류
+
+--ORA-00001: 무결성 제약 조건(ANGEL.PK_NUM)에 위배됩니다
+--NUM은 PK(PK는 NOT NULL+UNIQUE)
+INSERT INTO STUDENT (NUM,STUNAME) VALUES (1,'홍진주');
+
+--ORA-02290: 체크 제약조건(ANGEL.CK_SCORE)이 위배되었습니다
+--SCORE의 범위는 1~100이어야 한다
+INSERT INTO STUDENT (NUM,STUNAME,SCORE) VALUES (2,'강동호',110);--오류
+
+--오류 없는 정상데이터로 추가해보자
+INSERT INTO STUDENT VALUES (3,'이미자',89,SYSDATE);--날짜는 현재날짜로
+INSERT INTO STUDENT VALUES (4,'김민종',77,'2010-12-20');--날짜는 현재날짜로
+COMMIT; --COMMIT을 일단 하면 ROLLBACK이 안된다
+
+INSERT INTO STUDENT VALUES (5,'곤미나',56,'2019-05-10');--날짜는 현재날짜로
+INSERT INTO STUDENT VALUES (6,'강수지',98,SYSDATE);--날짜는 현재날짜로
+INSERT INTO STUDENT VALUES (7,'김진우',67,'2015-09-12');--날짜는 현재날짜로
+INSERT INTO STUDENT VALUES (8,'강호동',66,'2019-05-03');--날짜는 현재날짜로
+COMMIT;
+ROLLBACK;    --마지막 COMMIT한 이후의 DML작업에 대한 롤백
+
+--NUM이 5번인 데이터의 이름을 '손미라',SCORE를 80으로 수정
+UPDATE STUDENT SET STUNAME='손미라',SCORE=80 WHERE NUM=5;
+
+--BIRTHDAY의 월이 5인 사람의 점수를 일괄적으로 85로 수정하시오
+UPDATE STUDENT SET SCORE=85 WHERE TO_CHAR(BIRTHDAY,'MM')=5;
+COMMIT;
+
+--NUM이 7인 데이터 삭제
+DELETE FROM STUDENT WHERE NUM=7;
+
+--롤백 후 데이터 확인하기
+ROLLBACK;
+
+--다시 삭제문 실행
+DELETE FROM STUDENT WHERE NUM=7;
+
+--COMMIT 하기
+COMMIT;
+
+--다시 롤백후 데이터 확인하기
+ROLLBACK; --이미 커밋된 데이터는 취소되지 않는다
+
+--불필요한 제약조건 제거
+ALTER TABLE STUDENT DROP CONSTRAINT CK_SCORE;
+ALTER TABLE STUDENT DROP CONSTRAINT NN_NAME;
+
+--새로운 제약조건 추가
+ALTER TABLE STUDENT ADD CONSTRAINT UQ_NAME UNIQUE(STUNAME);
+
+
+--같은 이름의 데이터를 추가해보자
+--ORA-00001: 무결성 제약 조건(ANGEL.UQ_NAME)에 위배됩니다
+INSERT INTO STUDENT (NUM,STUNAME) VALUES (10,'강호동');
+
+--연습이 끝난후 시퀀스랑 테이블은 삭제해주세요
+DROP SEQUENCE SEQ_TEST;
+DROP TABLE STUDENT;
+
+SELECT * FROM STUDENT;
+---------------------------------------------------------------
+
+/*
+JOIN 연습용 테이블 2개 생성하기
+테이블 #1 : 
+        FOOD - FOODNUM 숫자(3)
+               FOODNAME ANSWKDUR(20)
+               FOODPRICE 숫자(7)
+               FOODSIZE 문자열(20)
+               
+        BOOKING - BNUM PK 숫자(3)
+                  BMAME 문자열(20) NN
+                  BHP 문자열(20) UQ
+                  FOODNUM 숫자(3) - FK(FOOD의 FOODNUM)
+                  BOOKINGDAY DATE
+                  
+        외부키로 연결된경우 BOOKING에 데이터가 추가된 이후 추가된 이후 추가된 FOODNUM은 삭제할 수 없다
+        (예를 들어 게시판의 댓글같은 경우 외부키로 연결되어있는데
+        이때도 댓글이 달린 경우 해당글을 삭제할 수 없는 게시판들이 있다)
+        -그런데 만약 FOOD의 데이터를 삭제하면 그 메뉴를 추가한 고객의 데이터도
+        자동으로 삭제시키고자 할 경우 BOOKING에 외부키를 설정할때 ON DELETE CASCADE를 주면 된다
+*/
+
+CREATE TABLE FOOD (
+    FOODNUM NUMBER(3) CONSTRAINT PK_FOODNUM PRIMARY KEY,
+    FOODNAME VARCHAR2(20),
+    FOODPRICE NUMBER(7),
+    FOODSIZE VARCHAR2(20)
+);
+
+--메뉴를 등록해보자
+INSERT INTO FOOD VALUES(100,'짜장면',9000,'보통');
+INSERT INTO FOOD VALUES(101,'짜장면',11000,'곱배기');
+INSERT INTO FOOD VALUES(200,'탕수육',15000,'보통');
+INSERT INTO FOOD VALUES(201,'탕수육',20000,'곱배기');
+INSERT INTO FOOD VALUES(300,'칠리새우',15000,'소');
+INSERT INTO FOOD VALUES(301,'칠리새우',30000,'대');
+INSERT INTO FOOD VALUES(400,'해물짬뽕',11000,'보통');
+COMMIT;
+SELECT * FROM FOOD;
+
+--시퀀스 추가
+CREATE SEQUENCE SEQ_FOOD NOCACHE;
+
+--BOOKING 테이블 생성
+CREATE TABLE BOOKING (
+    BNUM NUMBER(3) CONSTRAINT PK_BNUM PRIMARY KEY,
+    BNAME VARCHAR(20) CONSTRAINT NN_BNAME NOT NULL,
+    BHP VARCHAR2(20) CONSTRAINT UQ_BHP UNIQUE,
+    FOODNUM NUMBER(3),
+    BOOKINGDAY DATE,
+    CONSTRAINT FK_FOODNUM FOREIGN KEY(FOODNUM) REFERENCES FOOD(FOODNUM)
+);     
+
+--예약 테이블에 데이터를 추가해보자
+SELECT * FROM BOOKING;
+
+INSERT INTO BOOKING VALUES (SEQ_FOOD.NEXTVAL,'홍범자','010-2222-3333',101,SYSDATE);--OK
+--ORA-00001: 무결성 제약 조건(ANGEL.UQ_BHP)에 위배됩니다
+INSERT INTO BOOKING VALUES (SEQ_FOOD.NEXTVAL,'강호동','010-2222-3333',101,SYSDATE);--오류발생
+
+--오늘로부터 7일 후 예약
+INSERT INTO BOOKING VALUES (SEQ_FOOD.NEXTVAL,'이영자','010-3434-8899',301,SYSDATE+7);--OK
+
+--없는 메뉴 주문시 오류 발생
+--ORA-02291: 무결성 제약조건(ANGEL.FK_FOODNUM)이 위배되었습니다- 부모 키가 없습니다
+INSERT INTO BOOKING VALUES (SEQ_FOOD.NEXTVAL,'박지민','010-3434-4545',500,SYSDATE+3);--오류발생
+
+INSERT INTO BOOKING VALUES (SEQ_FOOD.NEXTVAL,'박지민','010-3434-4545',201,SYSDATE+3);--OK
+
+INSERT INTO BOOKING VALUES (SEQ_FOOD.NEXTVAL,'손미나','010-3434-1234',100,SYSDATE+10);--OK
+
+INSERT INTO BOOKING VALUES (SEQ_FOOD.NEXTVAL,'이효리','010-3434-4321',400,SYSDATE+1);--OK
+COMMIT;
+
+--JOIN으로 두 테이블을 조인해서 출력하시오
+--BNUM,BNAME,BHP,FOODNUM,FOODNAME,FOODPRICE,FOODSIZE,BOOKINGDAY(YYYY-MM-DD)
+SELECT BNUM,BNAME,BHP,B.FOODNUM,FOODNAME,FOODPRICE,
+FOODSIZE,TO_CHAR(BOOKINGDAY,'YYYY-MM-DD') BOOKINGDAY 
+FROM FOOD F,BOOKING B 
+WHERE F.FOODNUM = B.FOODNUM;
+
+--아무도 예약하지 않은 FOOD 음식은 무엇이 있을까?
+SELECT
+    BNUM,F.FOODNUM,FOODNAME,FOODPRICE,FOODSIZE
+FROM FOOD F,BOOKING B
+WHERE F.FOODNUM=B.FOODNUM(+) AND BNUM IS NULL;--200,300메뉴는 아무도 주문 안함
+
+--FOOD의 200번 메뉴는 삭제가 될까요?
+DELETE FROM FOOD WHERE FOODNUM=200;--아무도 주문한 사람이 없으므로 삭제가능
+
+--FOOD의 100번 메뉴는 삭제가 될까요?
+--ORA-02292: 무결성 제약조건(ANGEL.FK_FOODNUM)이 위배되었습니다- 자식 레코드가 발견되었습니다
+DELETE FROM FOOD WHERE FOODNUM=100; --100번 메뉴를 주문한 고객이 있으므로 삭제할 수 없음
+
+--부모 테이블인 FOOD를 삭제해보자
+DROP TABLE FOOD; --오류발생, 자식테이블을 먼저 삭제 후 부모 테이블을 삭제해야만 한다
+
+--연습이 끝난 후 두 테이블을 제고하세요
+DROP TABLE BOOKING;--자식 테이블 먼저 제거
+DROP TABLE FOOD;--자식 테이블 제거 후 부모 테이블 제거
+DROP SEQUENCE SEQ_FOOD;
+-------------------------------------------------------------------------------
+

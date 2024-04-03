@@ -1,0 +1,80 @@
+--복습문제
+--ename이 'A'나 'S'로 시작하는 사람의 ENAME,SAL,COMM 조회
+SELECT ENAME,SAL,COMM FROM EMP WHERE ENAME LIKE 'A%' OR ENAME LIKE 'S%';
+
+--COMM이 NULL이 아닌 사람만 조회
+SELECT COMM FROM EMP WHERE COMM IS NOT NULL;
+
+--MGR이 7698,7566,7782인 사람 조회 (IN사용)
+SELECT MGR FROM EMP WHERE MGR IN (7698,7566,7728);
+
+--SAL이 2500부텅 3000까지 조회 (AND연산)
+SELECT SAL FROM EMP WHERE SAL>=2500 AND SAL<=3000;
+
+--SAL이 2500부터 3000까지 조회 (BETWEEN 사용)
+SELECT SAL FROM EMP WHERE SAL BETWEEN 2500 AND 3000;
+
+--JOB을 중복처리해서 한번씩만 출력하시오
+SELECT DISTINCT JOB FROM EMP;
+
+--서브쿼리 문제
+--ALLEN의 직업과 같은 직업을 가진 사람들을 조회하시오
+SELECT * FROM EMP WHERE JOB = (SELECT JOB FROM EMP WHERE ENAME = 'ALLEN');
+
+--SCOTT의 MGR과 같은 값을 가진 사람의 정보를 조회하시오
+SELECT * FROM EMP WHERE MGR = (SELECT MGR FROM EMP WHERE ENAME = 'SCOTT');
+
+--숫자함수, 문자함수 연습
+SELECT ABS(-5),ABS(5) FROM DUAL; --ABS :  절대값
+SELECT CEIL(3.0),CEIL(3.1),CEIL(3.9) FROM DUAL; --CEIL : 무조건 올림
+SELECT FLOOR(3.0),FLOOR(3.1),FLOOR(3.9) FROM DUAL; --FLOOR : 무조건 내림
+SELECT MOD(7,3),MOD(9,5) FROM DUAL; --MOD : 나머지
+SELECT POWER(2,3),POWER(3,4) FROM DUAL; --POWER : 지수승
+SELECT ROUND(23.456,2),ROUND(8923,-1) FROM DUAL; --ROUND : 반올림
+
+--문자함수
+SELECT CONCAT('HAPPY','DAY') FROM DUAL;
+SELECT 'HAPPY'||'DAY' FROM DUAL; --위와 결과가 같다
+SELECT INITCAP('HAPPY'),INITCAP('hello') FROM DUAL; --첫글자만 대문자로
+SELECT LOWER('heLLOdAy'),UPPER('heLLOdAy') FROM DUAL;
+SELECT LOWER(ename),INITCAP(ename) FROM EMP;
+SELECT LPAD(SAL,10,'*') FROM EMP; --왼쪽으로 * 채우기
+SELECT RPAD(SAL,10,'*') FROM EMP; --오른쪽으로 * 채우기
+SELECT SUBSTR('happy day',2,3) FROM DUAL; --2번인덱스부터 글자 (첫글자 인덱스는 1) : app
+SELECT SUBSTR('happy day',-5,3) FROM DUAL; --뒤에서 5번째부터 3글자 (첫글자는 인덱스는 1) : y d
+SELECT ENAME,LENGTH(ENAME) 글자수 FROM EMP; --LENGTH : 길이, 글자수
+SELECT REPLACE('Good Day','o','*') FROM DUAL; --o를 *로 변경해서 출력
+SELECT INSTR('happy','a') FROM DUAL; --happy에 a의 위치 : 2
+SELECT INSTR('happy','x') FROM DUAL; --x가 없을 경우 0
+SELECT INSTR('have a nice day','nice') FROM DUAL; --8번째에 nice가 있음
+SELECT TRIM('     hello       ') FROM DUAL; --앞뒤 공백 제거후 출력
+
+--기타함수
+--NVL은 NULL일경우 대체값으로 출력
+SELECT NVL(COMM,1000) FROM DUAL; --NULL일 경우 1000으로 출력
+--DECODE : 값에 따라 다른값을 출력할 때
+SELECT ENAME 사원명,DEPTNO 부서코드,
+DECODE(DEPTNO,10,'홍보부',20,'교육부',30,'인사부') 부서명 FROM EMP;
+
+--JOIN : PPT 43페이지
+--INNER JOIN (내부조인), EQUI JOIN
+
+--방법 1
+SELECT
+    EMP.EMPNO,EMP.ENAME,EMP.JOB,DEPT.DNAME,DEPT.LOC
+FROM EMP,DEPT
+WHERE EMP.DEPTNO=DEPT.DEPTNO;
+
+--방법 2, 두테이블에 공통적으로 있는 컬럼일 경우에만 앞에 테이블명을 붙이고 나머지는 생략가능
+SELECT
+    EMPNO,ENAME,JOB,DNAME,LOC
+FROM EMP,DEPT
+WHERE EMP.DEPTNO=DEPT.DEPTNO;
+
+--방법 3 : 테이블명이 너무 길 경우에는 별칭을 사용할 수 있다
+SELECT
+    E.EMPNO,ENAME,JOB,DNAME,LOC
+FROM EMP E, DEPT D
+WHERE E.DEPTNO=D.DEPTNO;
+
+

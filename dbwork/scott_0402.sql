@@ -107,6 +107,8 @@ SELECT MAX(SAL) FROM EMP; --최고연봉
 SELECT MIN(SAL) FROM EMP; --최소연봉
 SELECT SUM(SAL) FROM EMP; --SAL의 합계
 SELECT AVG(SAL) FROM EMP; --SAL의 평균  2073.2142...
+SELECT COUNT(*) FROM EMP WHERE SAL = (SELECT MIN(SAL) FROM EMP);
+
 
 --AVG는 소숫점이하가 많이 나오는경우가 많아서 ROUND,CEIL,FLOOR 등과 같이 많이 사용
 --평균은 소숫점이하 2자리까지만 나오게 하기
