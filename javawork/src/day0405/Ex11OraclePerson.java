@@ -25,13 +25,42 @@ public class Ex11OraclePerson {
 	
 	public void insertPerson(String name,String blood,int age)
 	{
+		String sql="insert into person values (seq_test.nextval,?,?,?,sysdate)";
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		
+		try {
+			conn=DriverManager.getConnection(ORACLE_URL, USERNAME, PASSWORD);
+			pstmt=conn.prepareStatement(sql);
+			
+			//? 3개 바인딩
+			pstmt.setString(1, name);
+			pstmt.setString(2, blood);
+			pstmt.setInt(3, age);
+			
+			//실행
+			pstmt.execute();
+			
+			System.out.println("데이터가 추가되었습니다!");			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException|NullPointerException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		
 	}
 	
 	public void writePerson()
 	{
 		String sql="""
-				select pnum,pname,page||'세' page,upper(pblood)||'형' pblood,to_char(ipsaday,'yyyy-mm-dd hh:mi') ipsaday from person
+				select pnum,pname,page||'세' page,upper(pblood)||'형' pblood,to_char(ipsaday,'yyyy-mm-dd hh:mi') ipsaday from person order by pnum asc
 				""";
 		Connection conn=null;
 		PreparedStatement pstmt=null;
@@ -39,9 +68,28 @@ public class Ex11OraclePerson {
 		
 		try {
 			conn=DriverManager.getConnection(ORACLE_URL, USERNAME, PASSWORD);
+			pstmt=conn.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			
+			System.out.println("\t** Person Table **\n");
+			System.out.println("시퀀스\t이름\t혈액형\t나이\t입사일");
+			System.out.println("=".repeat(40));
+			
+			while(rs.next())
+			{
+				int pnum=rs.getInt("pnum");
+				String pname=rs.getString("pname");
+				String page=rs.getString("page");
+				String pblood=rs.getString("pblood");
+				String ipsaday=rs.getString("ipsaday");
+				
+				System.out.println(pnum+"\t"+pname+"\t"+pblood+"\t"+page+"\t"+ipsaday);
+			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
+			System.out.println("sql 오류 : "+e.getMessage());
 		}finally {
 			try {
 				rs.close();
