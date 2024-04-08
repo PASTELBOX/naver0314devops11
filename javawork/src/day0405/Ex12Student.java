@@ -121,13 +121,14 @@ public class Ex12Student {
 				int tot=rs.getInt("tot");
 				int avg=rs.getInt("avg");
 				String testday=rs.getString("testday");
-				System.out.println(num+"\t"+name+"\t"+java+"\t"+html+"\t"+tot+"\t"+avg+"\t"+testday);
+				System.out.println(num+"\t"+name+"\t"+java+"\t"+html+"\t"+spring+"\t"+tot+"\t"+avg+"\t"+testday);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			try {
+				rs.close();
 				pstmt.close();
 				conn.close();
 			} catch (SQLException|NullPointerException e) {
@@ -172,6 +173,8 @@ public class Ex12Student {
 			}
 			else if(menu==3)
 			{
+				System.out.println("번호"+"\t"+"이름"+"\t"+"JAVA"+"\t"+"HTML"+"\t"+"Spring"+"\t"+"총 점수"+"\t"+"평균점수"+"\t"+"시험 일자");
+				System.out.println("=".repeat(75));
 				ex12.writeStudent();
 			}
 			else
@@ -179,7 +182,7 @@ public class Ex12Student {
 				System.out.println("** 프로그램을 종료합니다 **");
 				break;
 			}
-			System.out.println("-".repeat(30));
+			System.out.println("=".repeat(75));
 		}
 	}
 

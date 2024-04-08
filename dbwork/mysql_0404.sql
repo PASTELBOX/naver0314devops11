@@ -299,3 +299,21 @@ insert into sawon (name,score,gender,buseo) values ('박봉자',89,'여자','홍
 
 delete from sawon where name='마이클';
 
+create table student
+(
+	num smallint auto_increment primary key,
+    name varchar(20),
+    java smallint,
+    html smallint,
+    spring smallint,
+    testday datetime
+);
+
+insert into student values (null,'이효리',90,80,97,now());
+
+select num,name,java,html,spring,
+	java+html+spring tot, round((java+html+spring)/3,1) avg,
+    date_format(testday,'%Y-%m-%d %H:%i') testday
+    from student;
+
+select *,java+html+spring tot from student order by tot desc;
