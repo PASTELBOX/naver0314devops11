@@ -16,7 +16,10 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+<<<<<<< HEAD
 import javax.swing.JOptionPane;
+=======
+>>>>>>> ddd1bb2c2e9dd33b6cc74320dee55a3f9e59fc68
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -24,16 +27,25 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import db.common.DbConnect;
+<<<<<<< HEAD
 import oracle.jdbc.proxy.annotation.Pre;
 
 public class Ex1_SwingDbStudent extends JFrame{
 	DbConnect db=new DbConnect();
 	JTable table;
+=======
+
+public class Ex1_SwingDbStudent extends JFrame {
+
+	DbConnect db=new DbConnect();
+	JTable	table;
+>>>>>>> ddd1bb2c2e9dd33b6cc74320dee55a3f9e59fc68
 	DefaultTableModel tableModel;
 	JTextField tfName,tfJava,tfHtml,tfSpring;
 	JButton btnAdd,btnDel;
 	JComboBox<String> cbResult;
 	int order=1;
+<<<<<<< HEAD
 	
 	public Ex1_SwingDbStudent(String title) {
 		// TODO Auto-generated constructor stub
@@ -41,18 +53,32 @@ public class Ex1_SwingDbStudent extends JFrame{
 		this.setLocation(100, 100);//시작위치
 		this.setSize(500, 400);//창크기
 		this.getContentPane().setBackground(new Color(93, 199, 187));//배경색 변경
+=======
+
+	public Ex1_SwingDbStudent(String title)
+	{
+		super(title);
+		this.setLocation(100, 100);//시작위치
+		this.setSize(500, 500);//창크기
+		//this.getContentPane().setBackground(new Color(93,199,140));//배경색 변경
+>>>>>>> ddd1bb2c2e9dd33b6cc74320dee55a3f9e59fc68
 		//this.getContentPane().setBackground(Color.yellow);//배경색 변경
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//프레임 종료
 		this.initDesign();//각종 컴포넌트 생성
 		this.setVisible(true);
 	}
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> ddd1bb2c2e9dd33b6cc74320dee55a3f9e59fc68
 	public void initDesign()
 	{
 		JPanel p1=new JPanel();
 		p1.add(new JLabel("이름"));
 		tfName=new JTextField(5);
 		p1.add(tfName);
+<<<<<<< HEAD
 		
 		p1.add(new JLabel("Java"));
 		tfJava=new JTextField(5);
@@ -74,21 +100,56 @@ public class Ex1_SwingDbStudent extends JFrame{
 		this.add("Center",new JScrollPane(table));
 		
 		/////////////////////////////
+=======
+
+		p1.add(new JLabel("Java"));
+		tfJava=new JTextField(5);
+		p1.add(tfJava);
+
+		p1.add(new JLabel("HTML"));
+		tfHtml=new JTextField(5);
+		p1.add(tfHtml);
+
+		p1.add(new JLabel("Spring"));
+		tfSpring=new JTextField(5);
+		p1.add(tfSpring);
+
+		this.add("North",p1);
+		////////////////////////////////////////////////////////
+
+		String []title= {"시퀀스","이름","Java","HTML","Spring","총점","평균"};
+		tableModel=new DefaultTableModel(title,0);
+		table=new JTable(tableModel);
+		this.add("Center",new JScrollPane(table));
+
+		////////////////////////////////////////////////////////
+>>>>>>> ddd1bb2c2e9dd33b6cc74320dee55a3f9e59fc68
 		JPanel p2=new JPanel();
 		btnAdd=new JButton("추가");
 		btnDel=new JButton("삭제");
 		p2.add(btnAdd);
 		p2.add(btnDel);
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> ddd1bb2c2e9dd33b6cc74320dee55a3f9e59fc68
 		String []cb= {"추가순","이름순","총점높은순","총점낮은순"};
 		cbResult=new JComboBox<String>(cb);
 		p2.add(new JLabel("출력순서"));
 		p2.add(cbResult);
 		this.add("South",p2);
+<<<<<<< HEAD
 		
 		//콤보박스 이벤트
 		cbResult.addItemListener(new ItemListener() {
 			
+=======
+
+		//콤보박스 이벤트
+		cbResult.addItemListener(new ItemListener() {
+
+>>>>>>> ddd1bb2c2e9dd33b6cc74320dee55a3f9e59fc68
 			@Override
 			public void itemStateChanged(ItemEvent e) {
 				// TODO Auto-generated method stub
@@ -97,6 +158,7 @@ public class Ex1_SwingDbStudent extends JFrame{
 				writeStudent();
 			}
 		});
+<<<<<<< HEAD
 		
 		//추가버튼 이벤트
 		btnAdd.addActionListener(new ActionListener() {
@@ -105,6 +167,15 @@ public class Ex1_SwingDbStudent extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				//입력안했을경우 이벤트 종료
+=======
+
+		//추가버튼 이벤트
+		btnAdd.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+>>>>>>> ddd1bb2c2e9dd33b6cc74320dee55a3f9e59fc68
 				if(tfName.getText().length()==0)
 					return;
 				if(tfJava.getText().length()==0)
@@ -113,12 +184,21 @@ public class Ex1_SwingDbStudent extends JFrame{
 					return;
 				if(tfSpring.getText().length()==0)
 					return;
+<<<<<<< HEAD
 				
 				//입력값을 db 에 insert
 				Connection conn=db.getConnection();
 				PreparedStatement pstmt=null;
 				String sql="insert into student values (null,?,?,?,?,now())";
 				
+=======
+
+				//입력값을 db에 insert
+				Connection conn=db.getConnection();
+				PreparedStatement pstmt=null;
+				String sql="insert into student values (null,?,?,?,?,now())";
+
+>>>>>>> ddd1bb2c2e9dd33b6cc74320dee55a3f9e59fc68
 				try {
 					pstmt=conn.prepareStatement(sql);
 					//? 갯수만큼 바인딩
@@ -126,7 +206,11 @@ public class Ex1_SwingDbStudent extends JFrame{
 					pstmt.setInt(2, Integer.parseInt(tfJava.getText()));
 					pstmt.setInt(3, Integer.parseInt(tfHtml.getText()));
 					pstmt.setInt(4, Integer.parseInt(tfSpring.getText()));
+<<<<<<< HEAD
 					
+=======
+
+>>>>>>> ddd1bb2c2e9dd33b6cc74320dee55a3f9e59fc68
 					//실행
 					pstmt.execute();
 					//입력값 초기화
@@ -134,15 +218,23 @@ public class Ex1_SwingDbStudent extends JFrame{
 					tfJava.setText("");
 					tfHtml.setText("");
 					tfSpring.setText("");
+<<<<<<< HEAD
 					
 					//다시 출력
 					writeStudent();					
 					
+=======
+
+>>>>>>> ddd1bb2c2e9dd33b6cc74320dee55a3f9e59fc68
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}finally {
+<<<<<<< HEAD
 					db.dbClose(pstmt, conn);
+=======
+					db.dbClose(pstmt, conn); 
+>>>>>>> ddd1bb2c2e9dd33b6cc74320dee55a3f9e59fc68
 				}
 			}
 		});
@@ -154,6 +246,7 @@ public class Ex1_SwingDbStudent extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				//테이블의 선택한 행번호 row를 얻는다
+<<<<<<< HEAD
 				int row=table.getSelectedRow();
 				//row가 -1이면 경고메세지후 이벤트 종료
 				if(row==-1) {
@@ -191,6 +284,25 @@ public class Ex1_SwingDbStudent extends JFrame{
 		writeStudent();		
 	}
 	
+=======
+				
+				//row가 -1이면 경고메세지 후 이벤트 종료
+				
+				//row행의 0번열에 있는 시퀀스 값을 얻는다 getValueAt
+				
+				//그 시퀀스에 해당하는 db데이터를 삭제하는 sql문 작성
+				
+				//Connection,PreparedStatement 생성 후 sql문 실행
+				
+			}
+		});
+
+
+		//출력 메서드 호출
+		writeStudent();
+	}
+
+>>>>>>> ddd1bb2c2e9dd33b6cc74320dee55a3f9e59fc68
 	//출력 메서드
 	public void writeStudent()
 	{
@@ -206,6 +318,7 @@ public class Ex1_SwingDbStudent extends JFrame{
 			sql="select *,java+html+spring tot from student order by tot desc";
 		else if(order==4)
 			sql="select *,java+html+spring tot from student order by tot asc";
+<<<<<<< HEAD
 		
 		try {
 			pstmt=conn.prepareStatement(sql);
@@ -214,6 +327,13 @@ public class Ex1_SwingDbStudent extends JFrame{
 			//기존 테이블의 데이타 지운후 추가하기
 			tableModel.setRowCount(0);
 			
+=======
+
+		try {
+			pstmt=conn.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+
+>>>>>>> ddd1bb2c2e9dd33b6cc74320dee55a3f9e59fc68
 			while(rs.next())
 			{
 				Vector<String> data=new Vector<String>();
@@ -223,6 +343,7 @@ public class Ex1_SwingDbStudent extends JFrame{
 				data.add(rs.getString("html"));
 				data.add(rs.getString("spring"));
 				data.add(rs.getString("tot"));
+<<<<<<< HEAD
 				
 				//평균 구하기
 				NumberFormat nf=NumberFormat.getInstance();
@@ -232,6 +353,16 @@ public class Ex1_SwingDbStudent extends JFrame{
 				//문자열로 변환후 추가
 				data.add(String.valueOf(nf.format(avg)));
 				
+=======
+
+				//평균 구하기
+				NumberFormat nf=NumberFormat.getInstance();
+				nf.setMaximumFractionDigits(2);//소숫점 2자리
+				double avg=rs.getInt("tot")/3.0;
+
+				data.add(String.valueOf(nf.format(avg)));
+
+>>>>>>> ddd1bb2c2e9dd33b6cc74320dee55a3f9e59fc68
 				//table에 추가
 				tableModel.addRow(data);
 			}
@@ -241,7 +372,11 @@ public class Ex1_SwingDbStudent extends JFrame{
 		}finally {
 			db.dbClose(pstmt, conn, rs);
 		}
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> ddd1bb2c2e9dd33b6cc74320dee55a3f9e59fc68
 	}
 
 	public static void main(String[] args) {
@@ -249,4 +384,8 @@ public class Ex1_SwingDbStudent extends JFrame{
 		Ex1_SwingDbStudent a=new Ex1_SwingDbStudent("학생관리DB");
 	}
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> ddd1bb2c2e9dd33b6cc74320dee55a3f9e59fc68
