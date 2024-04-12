@@ -15,38 +15,31 @@ import java.util.Vector;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-<<<<<<< HEAD
-import javax.swing.JOptionPane;
-=======
->>>>>>> ddd1bb2c2e9dd33b6cc74320dee55a3f9e59fc68
+import javax.swing.JLabel;<<<<<<<HEAD
+import javax.swing.JOptionPane;=======>>>>>>>ddd1bb2c2e9dd33b6cc74320dee55a3f9e59fc68
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import db.common.DbConnect;
-<<<<<<< HEAD
+import db.common.DbConnect;<<<<<<<HEAD
 import oracle.jdbc.proxy.annotation.Pre;
 
-public class Ex1_SwingDbStudent extends JFrame{
-	DbConnect db=new DbConnect();
-	JTable table;
-=======
-
 public class Ex1_SwingDbStudent extends JFrame {
+	DbConnect db = new DbConnect();
+	JTable table;=======
 
-	DbConnect db=new DbConnect();
-	JTable	table;
->>>>>>> ddd1bb2c2e9dd33b6cc74320dee55a3f9e59fc68
-	DefaultTableModel tableModel;
-	JTextField tfName,tfJava,tfHtml,tfSpring;
-	JButton btnAdd,btnDel;
-	JComboBox<String> cbResult;
-	int order=1;
-<<<<<<< HEAD
-	
+	public class Ex1_SwingDbStudent extends JFrame {
+
+		DbConnect db = new DbConnect();
+		JTable table;>>>>>>>
+		ddd1bb2c2e9dd33b6cc74320dee55a3f9e59fc68 DefaultTableModel tableModel;
+		JTextField tfName, tfJava, tfHtml, tfSpring;
+		JButton btnAdd, btnDel;
+		JComboBox<String> cbResult;
+		int order = 1;<<<<<<<HEAD
+
 	public Ex1_SwingDbStudent(String title) {
 		// TODO Auto-generated constructor stub
 		super(title);
@@ -66,12 +59,12 @@ public class Ex1_SwingDbStudent extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//프레임 종료
 		this.initDesign();//각종 컴포넌트 생성
 		this.setVisible(true);
-	}
-<<<<<<< HEAD
-	
-=======
+	}<<<<<<<HEAD
 
->>>>>>> ddd1bb2c2e9dd33b6cc74320dee55a3f9e59fc68
+		=======
+
+		>>>>>>>ddd1bb2c2e9dd33b6cc74320dee55a3f9e59fc68
+
 	public void initDesign()
 	{
 		JPanel p1=new JPanel();
@@ -297,13 +290,13 @@ public class Ex1_SwingDbStudent extends JFrame {
 			}
 		});
 
-
-		//출력 메서드 호출
+		// 출력 메서드 호출
 		writeStudent();
 	}
 
->>>>>>> ddd1bb2c2e9dd33b6cc74320dee55a3f9e59fc68
-	//출력 메서드
+	>>>>>>>ddd1bb2c2e9dd33b6cc74320dee55a3f9e59fc68
+
+	// 출력 메서드
 	public void writeStudent()
 	{
 		Connection conn=db.getConnection();
@@ -384,8 +377,5 @@ public class Ex1_SwingDbStudent extends JFrame {
 		Ex1_SwingDbStudent a=new Ex1_SwingDbStudent("학생관리DB");
 	}
 
-<<<<<<< HEAD
-}
-=======
-}
->>>>>>> ddd1bb2c2e9dd33b6cc74320dee55a3f9e59fc68
+	<<<<<<<HEAD
+}=======}>>>>>>>ddd1bb2c2e9dd33b6cc74320dee55a3f9e59fc68
