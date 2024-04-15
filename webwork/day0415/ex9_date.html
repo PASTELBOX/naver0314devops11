@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>
+      오늘 날짜 :
+      <script>
+        let date = new Date();
+        let y = date.getFullYear(); //년도 4글자 반환(자바때처럼 +1900 안해도됨)
+        let m = date.getMonth(); //0~11까지 반환하므로 +1 해야한다
+        let d = date.getDate();
+
+        document.write(`${y}-${m}-${d}`);
+      </script>
+    </h1>
+  </body>
+</html>
