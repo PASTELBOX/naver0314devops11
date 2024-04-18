@@ -37,8 +37,8 @@
         ctx.strokeStyle = "green"; //선색상
         ctx.fillStyle = "orange"; //채워진색상
         ctx.lineWidth = 5;
-        ctx.fillRect(50, 200, 100, 100); //x,y,w,h   채워진 사각형
-        ctx.strokeRect(200, 200, 100, 100); //테투리만 있는 사각형
+        ctx.fillRect(50, 200, 100, 100); //x,y,w,h , 채워진 사각형
+        ctx.strokeRect(200, 200, 100, 100); //테두리만 있는 사각형
 
         //그래픽 글자-그림자
         ctx.shadowOffsetX = 5;
@@ -46,17 +46,16 @@
         ctx.shadowBlur = 10;
         ctx.shadowColor = "gray";
 
-        ctx.font = "40px Dancing Script"; //글자 크기,글꼴
-        ctx.fillText("Have a Good Day!!!", 20, 400);
+        ctx.font = "40px Dancing Script"; //글자크기,글꼴
+        ctx.fillText("Have a Good Day!!!", 20, 400); //문자열,x,y
 
-        //그래픽 글자-그림자
         ctx.shadowOffsetX = 5;
         ctx.shadowOffsetY = 5;
         ctx.shadowBlur = 5;
         ctx.shadowColor = "gray";
         ctx.fillStyle = "blue";
 
-        ctx.font = "45px East Sea Dokdo"; //글자 크기,글꼴
+        ctx.font = "45px East Sea Dokdo"; //글자크기,글꼴
         ctx.fillText("목요일입니다!!!", 20, 450); //문자열,x,y
 
         //이미지 나타내기

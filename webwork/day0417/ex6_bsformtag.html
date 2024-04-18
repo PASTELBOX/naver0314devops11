@@ -19,9 +19,30 @@
       }
     </style>
     <script>
+      let photo, pname;
+
+      function init() {
+        //로칼스토리지의 값 불러와서 적용하기
+        photo.setAttribute("src", localStorage.photosrc);
+        pname.innerText = localStorage.photoname;
+        photo.style.borderColor = localStorage.linecolor;
+
+        document.querySelector(".selcolor").selectedIndex =
+          localStorage.lineindex;
+        document.querySelector(".selphoto").selectedIndex =
+          localStorage.photoindex;
+      }
       window.onload = function () {
-        let photo = document.querySelector(".largephoto");
-        let pname = document.querySelector(".photoname");
+        photo = document.querySelector(".largephoto");
+        pname = document.querySelector(".photoname");
+
+        init(); //로칼스토리지의 값 적용하기
+
+        //사진 클릭시 모달다이얼로그 사진 변경하기
+        photo.onclick = function () {
+          let src = this.getAttribute("src");
+          document.querySelector(".modalphoto").setAttribute("src", src);
+        };
 
         //문제1 : 선굵기 변경시 사진의 border 굵기 변경하기
         document.querySelector(".selwidth").onchange = function () {
@@ -31,6 +52,10 @@
         //문제2 : 선색상 변경시 사진의 border color 변경
         document.querySelector(".selcolor").onchange = function () {
           photo.style.borderColor = this.value;
+
+          //로칼스토리지에 "linecolor" 에 선색상 저장,lineindex 에 인덱스저장
+          localStorage.linecolor = this.value;
+          localStorage.lineindex = this.selectedIndex;
         };
         //문제3 : 사진 변경시 value 값얻어서 사진변경하고 label 값 얻어서 이름변경하기
         document.querySelector(".selphoto").onchange = function () {
@@ -39,6 +64,12 @@
           //이름 얻기
           let n = this.options[this.selectedIndex].label;
           pname.innerText = n;
+
+          //사진 변경시 3가지 로칼스토리지에 저장
+          //사진src : photosrc, 이름 : photoname, 인덱스:photoindex
+          localStorage.photosrc = this.value;
+          localStorage.photoname = n;
+          localStorage.photoindex = this.selectedIndex;
         };
         //문제4 : 선종류 변경시 사진의 border style 변경
         document.querySelector(".selstyle").onchange = function () {
@@ -64,6 +95,39 @@
     </script>
   </head>
   <body>
+    <!-- The Modal -->
+    <div class="modal" id="myPhoto">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">원본 사진 확인</h4>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            <img src="" class="modalphoto" style="width: 100%" />
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <table style="width: 500px" class="table table-bordered">
       <caption align="top">
         <h6><b>사진꾸미기</b></h6>
@@ -74,7 +138,9 @@
             src="../image/talent/15.jpg"
             width="180"
             class="largephoto"
-            style="border: 5px inset gold"
+            style="border: 5px inset gold; cursor: pointer"
+            data-bs-toggle="modal"
+            data-bs-target="#myPhoto"
           />
         </td>
         <td style="width: 70px">선굵기</td>
