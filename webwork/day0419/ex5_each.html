@@ -69,5 +69,22 @@
     <div class="box">Have a Good Day!!</div>
     <div class="box">Have a Good Day!!</div>
     <div class="box">Have a Good Day!!</div>
+
+    <script>
+      $("#btn1").click(function () {
+        //선택자 갯수만큼 반복을 하고자 할경우 each문을 이용
+        $("div.box").each(function (idx, ele) {
+          //ele는 어차피 this로 하면 되기때문에 생략해도됨
+          //$(this).addClass("box_"+idx);
+          $(ele).addClass("box_" + idx);
+        });
+      });
+
+      $("#btn2").click(function () {
+        $("div.box").each(function (idx, ele) {
+          $(this).removeClass("box_" + idx);
+        });
+      });
+    </script>
   </body>
 </html>
