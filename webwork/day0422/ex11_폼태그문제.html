@@ -119,6 +119,14 @@
                 // };
 
                 //이부분도 모두 제이쿼리를 이용해서 구현하시오
+                $(".selmail").change(function () {
+                  let imgSrc = $(this).val();
+                  //let name=$(".selphoto option:selected").text();//방법1
+                  let name = $("option:selected", this).text(); //방법2
+
+                  $(".photo").attr("src", imgSrc);
+                  $("option.title").text(name);
+                });
               </script>
             </div>
           </td>
