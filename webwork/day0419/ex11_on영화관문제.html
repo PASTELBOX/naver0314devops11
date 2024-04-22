@@ -96,8 +96,7 @@
         });
         $(document).on("click", "h4#movie", function () {
           let rs2 = $(this).text();
-          $("#result").text(`극장명: ${rs}`);
-          $("#result").text(`영화제목: ${rs2}`);
+          $("#result").html(`극장명: ${rs}<br>영화제목: ${rs2}`);
         });
       });
     </script>
