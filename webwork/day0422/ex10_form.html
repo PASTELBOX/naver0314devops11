@@ -25,132 +25,92 @@
     </style>
   </head>
   <body>
-    <div style="margin: 30px">
-      <table class="table table-bordered" style="width: 500px">
-        <caption align="top">
-          개인정보입력
-        </caption>
-        <tr>
-          <th class="table-info" style="width: 100px">이름</th>
-          <td>
-            <input
-              type="text"
-              id="txtname"
-              class="form-control"
-              style="width: 130px"
-              autofocus
-              placeholder="input name"
-            />
-          </td>
-        </tr>
-        <tr>
-          <th class="table-info" style="width: 100px">성별</th>
-          <td>
-            <label>
-              <input
-                type="radio"
-                value="남자"
-                name="gender"
-                checked
-                class="form-check-input"
-              />남자
-            </label>
-            <label>
-              <input
-                type="radio"
-                value="여자"
-                name="gender"
-                class="form-check-input"
-              />여자
-            </label>
-          </td>
-        </tr>
-        <tr>
-          <th class="table-info" style="width: 100px">이미지</th>
-          <td>
-            <select
-              id="selimage"
-              style="width: 140px"
-              class="form-select form-select-sm"
-            >
-              <option hidden disabled selected>select image</option>
-              <option value="../image/talent/17.jpg">신민아</option>
-              <option value="../image/talent/18.jpg">신세경</option>
-              <option value="../image/talent/20.jpg">유아인</option>
-              <option value="../image/talent/12.jpg">박보영</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <th class="table-info" style="width: 100px">이메일</th>
-          <td>
-            <div class="input-group">
-              <input
-                type="text"
-                id="email1"
-                style="width: 60px"
-                class="form-control"
-              />
-              <b>@</b>
-              <input
-                type="text"
-                id="email2"
-                style="width: 80px"
-                class="form-control"
-              />
-              <select id="selemail" class="form-select form-select-sm">
-                <option hidden disabled selected>select email</option>
-                <option value="-">직접입력</option>
-                <option value="naver.com">네이버</option>
-                <option value="nate.com">네이트</option>
-                <option value="google.com">구글</option>
-              </select>
-              <script>
-                //select 이벤트
-                // document.getElementById("selemail").onchange=function(){
-                //     let v=this.value;
-                //     let e2=document.getElementById("email2");
-                //     if(v=='-'){
-                //         e2.value="";
-                //         e2.focus();
-                //     }else{
-                //         e2.value=v;
-                //     }
-                // }
+    <h3>간단한 폼태그들</h3>
+    <input
+      type="text"
+      class="form-control"
+      id="txt1"
+      placeholder="메세지를 입력하세요"
+    />
 
-                //이부분도 모두 제이쿼리를 이용해서 구현하시오
-              </script>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <th class="table-info" style="width: 100px">운전면허</th>
-          <td>
-            <label>
-              <input
-                type="checkbox"
-                id="lic"
-                class="form-check-input"
-              />운전면허
-            </label>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2" align="center" class="table-secondary">
-            <button
-              type="button"
-              class="btn btn-warning"
-              style="width: 120px"
-              id="btnresult"
-            >
-              결과 확인
-            </button>
-          </td>
-        </tr>
-      </table>
-      <div class="alert alert-light msg" style="width: 500px; height: auto">
-        result
-      </div>
+    <br />
+    <input
+      type="text"
+      class="form-control"
+      id="txt2"
+      placeholder="위에 입력한 내용이 나옵니다"
+    />
+
+    <script>
+      //#txt1 의 값으르 읽어서 #txt2 에 넣어보자
+      $("#txt1").keyup(function () {
+        // let v=$(this).val();
+        // $("#txt2").val(v);
+
+        //한줄로 줄이면
+        $("#txt2").val($(this).val());
+      });
+    </script>
+    <hr />
+    <div class="input-group" style="width: 400px">
+      <select class="form-select selcolor" style="width: 120px">
+        <option>pink</option>
+        <option>yellow</option>
+        <option>gray</option>
+        <option>orange</option>
+      </select>
+      <input
+        type="color"
+        class="mycolor"
+        value="#ccffcc"
+        style="margin-left: 10px"
+      />
+      <div class="box" style="width: 200px; text-align: center">Hello</div>
     </div>
+    <script>
+      $(".selcolor").change(function () {
+        $("div.box").css("background-color", $(this).val());
+      });
+
+      $(".mycolor").change(function () {
+        $("div.box").css("color", $(this).val());
+      });
+    </script>
+    <hr />
+    <label> <input type="checkbox" id="ck1" value="hello" />테두리선 </label>
+    <img src="../image/mycar/mycar15.png" width="200" class="mycar" />
+    <script>
+      $("#ck1").click(function () {
+        //체크값
+        let ck = $(this).is(":checked"); //true/false
+        //value 값
+        let v = $(this).val();
+        //alert(ck+":"+v);
+
+        if (ck) $(".mycar").css("border", "10px inset gold");
+        else $(".mycar").css("border", "");
+      });
+    </script>
+    <hr />
+    <div class="input-group" style="width: 200px">
+      <select class="form-select selphoto">
+        <option hidden disabled selected>select image</option>
+        <option value="../image/talent/17.jpg">신민아</option>
+        <option value="../image/talent/18.jpg">신세경</option>
+        <option value="../image/talent/19.jpg">수지</option>
+      </select>
+    </div>
+    <img src="../image/talent/1.jpg" class="photo" width="100" />
+    <h2 class="title"></h2>
+    <script>
+      $(".selphoto").change(function () {
+        let imgSrc = $(this).val();
+        //let name=$(".selphoto option:selected").text();//방법1
+        let name = $("option:selected", this).text(); //방법2
+
+        $(".photo").attr("src", imgSrc);
+        $("h2.title").text(name);
+      });
+    </script>
   </body>
 </html>
