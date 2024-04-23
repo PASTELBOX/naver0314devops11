@@ -23,6 +23,29 @@
         font-family: "Jua";
       }
     </style>
+    <script>
+      $(function () {
+        $("#btnresult").click(function () {
+          let s = "";
+          let name = $("#txtname").val();
+          let gender = $("input[name='gender']:checked").val();
+          let imgSrc = $("#selimage").val();
+          let nickName = $("#selimage option:selected").text();
+          let email = $("#email1").val() + "@" + $("#email2").val();
+          let emailName = $("#selemail option:selected").text();
+          let lic = $("#lic").is(":checked"); //true/false
+          s += `
+                <img src="${imgSrc}" width=200 align=left hspace=20>
+                이름 : ${name}(닉네임:${nickName})
+                성별 : ${gender}
+                ${emailName} 이메일 : ${email}
+                운전면허 : ${lic ? "있음" : "없음"}
+                `;
+
+          $("div.msg").html(s);
+        });
+      });
+    </script>
   </head>
   <body>
     <div style="margin: 30px">
@@ -119,6 +142,14 @@
                 // }
 
                 //이부분도 모두 제이쿼리를 이용해서 구현하시오
+                $("#selemail").change(function () {
+                  let email = $(this).val();
+                  if (email == "-") {
+                    $("#email2").val("").focus();
+                  } else {
+                    $("#email2").val(email);
+                  }
+                });
               </script>
             </div>
           </td>
@@ -148,7 +179,10 @@
           </td>
         </tr>
       </table>
-      <div class="alert alert-light msg" style="width: 500px; height: auto">
+      <div
+        class="alert alert-light msg"
+        style="width: 500px; height: auto; white-space: pre-line"
+      >
         result
       </div>
     </div>
