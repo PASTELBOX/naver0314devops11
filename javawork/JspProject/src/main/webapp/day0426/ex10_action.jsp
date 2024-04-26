@@ -14,28 +14,31 @@
         body *{
             font-family: 'Jua';
         }
-        div {
-        	text-align : center;
-        }
-     </style>
+    </style>
 </head>
 <%
 	request.setCharacterEncoding("utf-8");
 	String menuname=request.getParameter("menuname");
 	String foodphoto=request.getParameter("foodphoto");
+	String photo=foodphoto.split(",")[0];
+	String price=foodphoto.split(",")[1];
 	String grade=request.getParameter("grade");
 	String member=request.getParameter("member");
-	String []photo = foodphoto.split(",");
-	String image = photo[0];
-	String price = photo[1];
 %>
 <body>
-	<div style="margin: 30px;font-size: 30px;width : 300px">
-	메뉴명 : <%=menuname %><br>
-	가 격 : <%=price %>원<br>
-	<img src="<%=image %>" style="width : 300px; border : 2px"><br>
+<div style="margin: 30px;font-size: 20px">
+	메뉴이름 : <%=menuname %><br>
+	가   격 : <%=price %>원<br>
+	사   진 <br>
+	<img src="<%=photo%>" width="300" border="2">
+	<br>
 	만족도 : <%=grade %><br>
-	우수회원 : <%=member==null?"X":"O" %><br>
+	회원 등급 : <%=member==null?"일반회원":"우수회원" %>
+	
+	<br><br>
+	<a href="javascript:history.back()">다시 선택 #1</a>
+	<br><br>
+	<a href="ex10_formtag.jsp">다시 선택 #2</a>
 </div>
 </body>
 </html>

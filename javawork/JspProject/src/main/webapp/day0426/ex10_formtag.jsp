@@ -41,13 +41,12 @@
 				 
 				 <!-- 제이쿼리 이벤트는 요기에 -->
 				 <script type="text/javascript">
-				 $("#foodphoto").change(function(){
-					let v=$(this).val();
-					let photo=v.split(",")[0];
-					$("#photo").attr("src",photo);
-				 });
+				 	$("#foodphoto").change(function(){
+				 		let v=$(this).val();
+				 		let photo=v.split(",")[0];
+				 		$("#photo").attr("src",photo);
+				 	});
 				 </script>
-				 
 			</td>
 		</tr>
 		<tr>
