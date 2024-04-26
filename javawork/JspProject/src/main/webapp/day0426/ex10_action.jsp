@@ -14,9 +14,28 @@
         body *{
             font-family: 'Jua';
         }
-    </style>
+        div {
+        	text-align : center;
+        }
+     </style>
 </head>
+<%
+	request.setCharacterEncoding("utf-8");
+	String menuname=request.getParameter("menuname");
+	String foodphoto=request.getParameter("foodphoto");
+	String grade=request.getParameter("grade");
+	String member=request.getParameter("member");
+	String []photo = foodphoto.split(",");
+	String image = photo[0];
+	String price = photo[1];
+%>
 <body>
-
+	<div style="margin: 30px;font-size: 30px;width : 300px">
+	메뉴명 : <%=menuname %><br>
+	가 격 : <%=price %>원<br>
+	<img src="<%=image %>" style="width : 300px; border : 2px"><br>
+	만족도 : <%=grade %><br>
+	우수회원 : <%=member==null?"X":"O" %><br>
+</div>
 </body>
 </html>
