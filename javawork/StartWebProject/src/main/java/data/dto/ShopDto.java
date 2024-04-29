@@ -79,8 +79,4 @@ public class ShopDto {
 	public void setWriteday(Timestamp writeday) {
 		this.writeday = writeday;
 	}
-	
-	
-	
-	
 }
