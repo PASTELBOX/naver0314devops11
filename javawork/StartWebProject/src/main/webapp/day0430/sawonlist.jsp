@@ -91,6 +91,21 @@ img.photo {
 					<td>
 						<img src="" class="photo"
 						onerror="this.src='../image/noimage2.png'">
+						
+						<select class="form-select" name="photo" id="photo">
+							<option value="no">프로필사진없음</option>
+							<%
+								for(int i=1;i<=20;i++) {%>
+									<option value="../image/<%=i %>.jpg">프사#<%=i %></option>
+								<%}
+							%>
+						</select>
+						<script type="text/javascript">
+							$("#photo").change(function(){
+								let src=$(this).val();
+								$(".photo").attr("src",src);
+							});
+						</script>
 					</td>
 				</tr>				
 				
