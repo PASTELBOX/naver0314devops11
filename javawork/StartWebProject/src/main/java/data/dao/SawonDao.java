@@ -44,6 +44,60 @@ public class SawonDao {
 			db.dbClose(pstmt, conn);
 		}
 	}
+	
+	public void deleteSawon(int num)
+	{
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		
+		String sql="delete from mysawon where num=?";
+		
+		conn=db.getConnection();
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.dbClose(pstmt, conn);
+		}
+		
+	}
+	
+	public void updateSawon(SawonDto dto)
+	{
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		
+		String sql="update mysawon set photo=?,name=?,addr=?,age=?,birthday=?,buseo=?,gender=? where num=?";
+		
+		conn=db.getConnection();
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			pstmt.setString(1, dto.getPhoto());
+			pstmt.setString(2, dto.getName());
+			pstmt.setString(3, dto.getAddr());
+			pstmt.setInt(4, dto.getAge());
+			pstmt.setString(5, dto.getBirthday());
+			pstmt.setString(6, dto.getBuseo());
+			pstmt.setString(7, dto.getGender());
+			pstmt.setInt(8, dto.getNum());
+			
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.dbClose(pstmt, conn);
+		}
+		
+	}
+	
 	//전체출력
 	public List<SawonDto> getAllSawons()
 	{
@@ -122,4 +176,5 @@ public class SawonDao {
 		
 		return dto;
 	}
+	
 }

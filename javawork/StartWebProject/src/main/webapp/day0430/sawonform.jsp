@@ -98,7 +98,7 @@
 				</td>
 			</tr>
 			<tr>
-				<th width="100" class="table-danger">생년월일</th>
+				<th width="100" class="table-danger">입사일</th>
 				<td>
 					<input type="date" class="form-control" name="birthday"
 					value="2024-04-30">
