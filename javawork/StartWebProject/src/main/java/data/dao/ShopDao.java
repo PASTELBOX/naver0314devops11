@@ -71,7 +71,7 @@ public class ShopDao {
 	}
 	
 	//삭제
-	public void deleteShop(ShopDto dto)
+	public void deleteShop(int shopidx)
 	{
 		Connection conn=null;
 		PreparedStatement pstmt=null;
@@ -81,9 +81,9 @@ public class ShopDao {
 		try {
 			pstmt=conn.prepareStatement(sql);
 			//바인딩
-			pstmt.setString(1, dto.getShopidx());
+			pstmt.setInt(1, shopidx);
 			//실행
-			pstmt.executeUpdate();
+			pstmt.execute();
 			
 		} catch (SQLException e) {
 			System.out.println("delete 오류:"+e.getMessage());

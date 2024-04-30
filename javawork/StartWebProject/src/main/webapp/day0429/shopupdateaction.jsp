@@ -33,4 +33,7 @@
 	//6. shoplist.jsp 로 이동
 	response.sendRedirect("shoplist.jsp");//이동,url 주소 바뀜
 	
+	//6. shopdetail 페이지로 이동
+	response.sendRedirect("shopdetail.jsp?shopidx="+shopidx);
+	
 %>
