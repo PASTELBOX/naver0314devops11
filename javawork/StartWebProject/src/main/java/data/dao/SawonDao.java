@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 import java.util.Vector;
 
 import data.dto.SawonDto;
@@ -176,5 +177,17 @@ public class SawonDao {
 		
 		return dto;
 	}
+	
+	
+	//성별 분석 데이터 반환
+	public List<Map<String, String>> getGenderAnalysis()
+	{
+		List<Map<String, String>> list=new Vector<Map<String,String>>();
+		
+		return list;
+	}
+	
+	
+	
 	
 }

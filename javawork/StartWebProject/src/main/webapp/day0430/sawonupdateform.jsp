@@ -39,7 +39,7 @@
 		<input type="hidden" name="num" value="<%=num %>">
 		<table class="table table-bordered">
 			<caption align="top">
-				<h5 class="alert alert-warning">사원정보입력</h5>
+				<h5 class="alert alert-success">사원정보입력</h5>
 			</caption>
 			<tr>
 				<th width="100" class="table-danger">사원명</th>

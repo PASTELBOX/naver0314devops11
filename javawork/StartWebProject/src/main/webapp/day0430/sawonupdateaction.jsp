@@ -28,5 +28,5 @@
 
 	dao.updateSawon(dto);
 
-	response.sendRedirect("sawondetail.jsp?num="+num);
+	response.sendRedirect("sawondetail.jsp?num="+dto.getNum());
 %>

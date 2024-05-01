@@ -51,7 +51,7 @@ div.list img{
 	List<SawonDto> list=dao.getAllSawons();
 %>
 <body>
-	<div style="margin: 20px; width: 500px;">
+	<div style="margin: 20px; width: 600px;">
 		<div class="input-group">
 			<h5 class="alert alert-danger" style="width: 400px;">
 				총 <%=list.size() %>명의 사원이 있습니다
@@ -60,6 +60,15 @@ div.list img{
 			onclick="location.href='sawonform.jsp'"
 			style="margin-left : 10px;height : 50px;">사원추가</button>	
 		</div>
+<div style="margin : 20px 50px;">
+	<button type="button" class="btn btn-success"
+	style="width : 170px;"
+	onclick="location.href='sawonageanalysis.jsp'">우리회사성별분석표</button>	
+	<button type="button" class="btn btn-success"
+	style="width : 170px;"
+	onclick="location.href='sawonageanalysis.jsp'">우리회사부서별분석표</button>	
+</div>
+
 		<%
 		for(SawonDto dto:list)
 		{%>
