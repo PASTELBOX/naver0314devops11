@@ -1,3 +1,6 @@
+<%@page import="java.util.Map"%>
+<%@page import="java.util.List"%>
+<%@page import="data.dao.SawonDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,8 +20,39 @@
     </style>
 
 </head>
+<%
+	SawonDao dao=new SawonDao();
+	
+	List<Map<String,String>> list=dao.getBuseoAnalysis();
+%>
 <body>
 <!-- 부서별 인원수와 평균 나이 -->
-	
+	<div style="margin : 30px 100px;width:300px;">
+		<table class="table table-striped" style="width:100%;">
+			<caption align="top">
+			<h4>우리 회사 부서별 분석표</h4>
+			</caption>
+			<tr class="table-secondary">
+				<th width="100">부서명</th>
+				<th width="100">인원수</th>
+				<th>평균나이</th>
+			</tr>
+			<%for(Map<String,String> map : list)
+			{%>
+				<tr align="center">
+					<td><%=map.get("buseo") %></td>
+					<td><%=map.get("count") %>명</td>
+					<td><%=map.get("age") %>세</td>
+				</tr>
+			<%}
+			%>
+			<tr>
+				<td colspan="3" align="center">
+				<button type="button" class="btn btn-outline-danger"
+				onclick="history.back()">이전으로</button>
+				</td>
+			</tr>
+		</table>
+	</div>
 </body>
 </html>
