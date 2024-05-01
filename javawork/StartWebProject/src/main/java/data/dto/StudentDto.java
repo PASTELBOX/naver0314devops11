@@ -10,7 +10,7 @@ public class StudentDto {
 	private String name;
 	private String blood;
 	private char license;
-	private Timestamp wirteday;
+	private Timestamp writeday;
 	
 	public int getNum() {
 		return num;
@@ -54,12 +54,10 @@ public class StudentDto {
 	public void setLicense(char license) {
 		this.license = license;
 	}
-	public Timestamp getWirteday() {
-		return wirteday;
+	public Timestamp getWriteday() {
+		return writeday;
 	}
-	public void setWirteday(Timestamp wirteday) {
-		this.wirteday = wirteday;
+	public void setWriteday(Timestamp writeday) {
+		this.writeday = writeday;
 	}
-	
-	
 }
