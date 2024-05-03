@@ -4,7 +4,7 @@
     padding: 20px;
   }
 
-  .welcome-header {
+  .regist-header {
     margin: 90px 0px;
     text-align: center;
     display: flex;
@@ -12,51 +12,55 @@
     align-items: center;
   }
 
-  #welcome-header__img{
+  #regist-header__img{
     width: 100px;
     height: 100px;
   }
 
-  .welcome-header__title {
+  .regist-header__title {
     margin-bottom: 20px;
     font-size: 40px;
   }
 
-  #login-form {
+  #regist-form {
     display: flex;
     flex-direction: column;
     margin: 0px 30px;
   }
   
-  #login-form input {
+  #regist-form input {
     border: none;
     padding: 15px 0px;
     font-size: 18px;
     margin-bottom: 25px;
   }
   
-  #login-form input:not([type="submit"]) {
+  #regist-form input:not([type="submit"]) {
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     transition: border-color 0.3s ease-in-out;
   }
   
-  #login-form input::placeholder {
+  #regist-form input::placeholder {
     color: rgba(0, 0, 0, 0.4);
   }
   
-  #login-form input:focus {
+  #regist-form input:focus {
     border-color: cyan;
   }
   
-  #login-form input[type="submit"] {
+  #regist-form input[type="submit"] {
     background-color: cyan;
     cursor: pointer;
     padding: 20px 0px;
     border-radius: 5px;
   }
   
-  #login-form a {
+  #regist-form a {
     text-align: center;
     text-decoration: none;
     font-size: 20px;
   }
+  
+  .rphoto {
+	margin : 30px 30px;
+}

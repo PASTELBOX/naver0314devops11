@@ -4,20 +4,46 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Registration</title>
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
  <link href="css/style.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Dancing+Script:wght@400..700&family=East+Sea+Dokdo&family=Jua&family=Gaegu&family=Gamja+Flower&family=Pacifico&family=Single+Day&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <style>
+        .regist-header__title{
+            font-family: "Lobster", sans-serif;
+    </style>
 </head>
-<body>
-	<div>
-		<form action="./RegitForm.jsp" method="post">
-			
-		
-		</form>
-	</div>
+<body style="border : 1px solid gray;border-radius : 5px;">
+	<div class="regist-header">
+      <img src="image/instagramlogo.png" id="regist-header__img"/>
+      <h1 class="regist-header__title">INSTAKILOGRAM</h1>
+    </div>
+    
+	<form action="./RegistAction.jsp" method="post" id="regist-form">
+      <input name="username" type="text" placeholder="Username" />
+      <input name="password" type="password" placeholder="Password" />
+      <input name="email" type="email" placeholder="Email" />
+      <input name="name" type="text" placeholder="Name" />
+      <input name="introduce" type="text" placeholder="Text" />
+      <select name="profilephoto" id="image-select" class="form-select">
+            <%
+                for (int i = 1; i <= 5; i++) {%>
+                	<option value='image/<%=i%>.png'>
+					프로필사진<%=i%>
+					</option>
+                <%}
+            %>
+      </select>
+        
+        <img src="image/1.png" class="rphoto"/>
+      <input type="submit" value="Sign In" />
+    </form>
+    
+    <script type="text/javascript">
+        $("#image-select").change(function() {
+            $(".rphoto").attr("src",$(this).val())
+        });
+    </script>
 </body>
 </html>
