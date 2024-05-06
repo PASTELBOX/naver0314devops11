@@ -12,6 +12,8 @@
     <style>
         .regist-header__title{
             font-family: "Lobster", sans-serif;
+        }
+        
     </style>
 </head>
 <body style="border : 1px solid gray;border-radius : 5px;">
@@ -28,16 +30,16 @@
       <input name="introduce" type="text" placeholder="Text" />
       <select name="profilephoto" id="image-select" class="form-select">
             <%
-                for (int i = 1; i <= 5; i++) {%>
+                for (int i = 1; i <= 5; i++) { %>
                 	<option value='image/<%=i%>.png'>
 					프로필사진<%=i%>
 					</option>
-                <%}
+                <% }
             %>
       </select>
         
         <img src="image/1.png" class="rphoto"/>
-      <input type="submit" value="Sign In" />
+      <input type="submit" value="Sign Up" />
     </form>
     
     <script type="text/javascript">
