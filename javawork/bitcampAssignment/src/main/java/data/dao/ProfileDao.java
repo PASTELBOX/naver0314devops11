@@ -20,7 +20,7 @@ public class ProfileDao {
 		PreparedStatement pstmt=null;
 		
 		String sql="""
-				insert into instaprofile (name,email,username,password,introduce,profilephoto)
+				insert into profile (name,email,username,password,introduce,profilephoto)
 				values (?,?,?,?,?,?)
 				""";
 		conn=connect.getConnection();
@@ -47,18 +47,18 @@ public class ProfileDao {
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		
-		String sql="update instaprofile set name=?,email=?,username=?,password=?,introduce=?,profilephoto=?";
-		conn=connect.getConnection();//db 연결
+		String sql="update profile set name=?,email=?,username=?,password=?,introduce=?,profilephoto=?";
+		conn=connect.getConnection();
 		try {
 			pstmt=conn.prepareStatement(sql);
-			//바인딩
+			
 			pstmt.setString(1, dto.getName());
 			pstmt.setString(2, dto.getEmail());
 			pstmt.setString(3, dto.getUsername());
 			pstmt.setString(4, dto.getPassword());
 			pstmt.setString(5, dto.getIntroduce());
 			pstmt.setString(6, dto.getProfilephoto());
-			//실행
+			
 			pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -75,7 +75,7 @@ public class ProfileDao {
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		String sql="select * from instaprofile";
+		String sql="select * from profile";
 		
 		conn=connect.getConnection();
 		try {

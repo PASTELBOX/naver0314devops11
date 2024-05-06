@@ -1,17 +1,29 @@
-.nav {
+  .nav {
     position: fixed;
-    bottom: 0;
-    width: 100%;
+    display : flex;
+    justify-content: center;
+    left:0;
+    top: 0;
+    width: 200px;
+    height: 100vh;
     background-color: #f9f9fa;
     padding: 20px 50px;
     box-sizing: border-box;
-    border-top: 1px solid rgba(121, 121, 121, 0.3);
+    border-right: 1px solid rgba(121, 121, 121, 0.3);
   }
+  
   .nav__list {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+    align-items: flex-start;
+    margin: 50px 0;
+    padding-bottom: 400px;
   }
+
   .nav__link {
     position: relative;
     color: #2e363e;
+    margin : 10px;
+    text-decoration:none;
   }

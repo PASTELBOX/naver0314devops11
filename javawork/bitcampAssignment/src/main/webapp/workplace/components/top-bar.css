@@ -1,0 +1,16 @@
+.top-bar {
+	width: calc(100% - 200px);
+    margin-left: 200px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    height : 60px;
+}
+
+.top-bar__column-img {
+    width: 56px;
+    height: 56px;
+    border-radius: 28px;
+}
