@@ -22,7 +22,7 @@
         }
     </style>
 </head>
-<body>
+<body class="main__body">
 	<nav class="nav">
 		<ul class="nav__list">
 			<li class="welcome-header__title">INSTAKILOGRAM</li>

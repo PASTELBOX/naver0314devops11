@@ -16,8 +16,8 @@ public class FeedDao {
     	PreparedStatement pstmt=null;
     	
         String sql = """
-                insert into feed (title, writetime, feedphoto, tag, text)
-                values (?, ?, ?, ?, ?)
+                insert into feed (title, feedphoto, tag, text, writetime)
+                values (?, ?, ?, ?, now())
                 """;
         conn=connect.getConnection();
 
@@ -25,16 +25,17 @@ public class FeedDao {
         	pstmt=conn.prepareStatement(sql);
         	
             pstmt.setString(1, dto.getTitle());
-            pstmt.setTimestamp(2, dto.getWritetime());
-            pstmt.setString(3, dto.getFeedphoto());
-            pstmt.setString(4, dto.getTag());
-            pstmt.setString(5, dto.getText());
+            pstmt.setString(2, dto.getFeedphoto());
+            pstmt.setString(3, dto.getTag());
+            pstmt.setString(4, dto.getText());
 
             pstmt.executeUpdate();
 
         } catch (SQLException e) {
-            System.err.println("Error inserting feed: " + e.getMessage());
+        	System.out.println("insert 오류:"+e.getMessage());
            
+        } finally {
+        	connect.dbClose(pstmt, conn);
         }
     }
 
@@ -43,23 +44,24 @@ public class FeedDao {
     	Connection conn=null;
 		PreparedStatement pstmt=null;
 		
-        String sql = "update feed set title=?,wirtetime=?,feedphoto=?,tag=?,text=? where num=?";
+        String sql = "update feed set title=?,feedphoto=?,tag=?,text=? where num=?";
         conn=connect.getConnection();
         		
         try {
         	pstmt=conn.prepareStatement(sql);
             
             pstmt.setString(1, dto.getTitle());
-            pstmt.setTimestamp(2, dto.getWritetime());
-            pstmt.setString(3, dto.getFeedphoto());
-            pstmt.setString(4, dto.getTag());
-            pstmt.setString(5, dto.getText());
-            pstmt.setInt(6, dto.getNum());
+            pstmt.setString(2, dto.getFeedphoto());
+            pstmt.setString(3, dto.getTag());
+            pstmt.setString(4, dto.getText());
+            pstmt.setInt(5, dto.getNum());
 
             pstmt.executeUpdate();
 
         } catch (SQLException e) {
-            System.err.println("Error updating feed: " + e.getMessage());
+        	System.out.println("update 오류:"+e.getMessage());
+        } finally {
+        	connect.dbClose(pstmt, conn);
         }
     }
 
@@ -89,7 +91,7 @@ public class FeedDao {
             }
 
         } catch (SQLException e) {
-            System.err.println("Error fetching feed data: " + e.getMessage());
+        	System.out.println("select 오류:"+e.getMessage());
         } finally {
         	connect.dbClose(rs, pstmt, conn);
         }

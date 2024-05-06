@@ -22,7 +22,7 @@
         }
     </style>
 </head>
-<body>
+<body class="search__body">
 	<nav class="nav">
 		<ul class="nav__list">
 			<li class="welcome-header__title">INSTAKILOGRAM</li>
@@ -55,8 +55,8 @@
         <% } %>
     </div>
     
-    <div class="search">
-        <form action="MainForm.jsp" method="get" class="search__form">
+    <div class="search-bar">
+        <form action="SearchForm.jsp" method="get" class="search__form">
             <input type="text" name="tag" placeholder="태그 검색" value="<%= request.getParameter("tag") %>">
             <button type="submit" class="search__form-btn"><i class="bi bi-search"></i></button>
         </form>

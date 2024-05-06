@@ -18,7 +18,7 @@
         }
     </style>
 </head>
-<body>
+<body class="add__body">
     <nav class="nav">
         <ul class="nav__list">
             <li class="welcome-header__title">INSTAKILOGRAM</li>
@@ -53,24 +53,17 @@
     </div>
 
     <div class="add__container">
-        <h2>Feed</h2>
+        <img src="" class="add__container-form__img"
+		onerror="this.src='image/1.jpg'">
         <form action="AddAction.jsp" method="post" class="add__container-form">
+        <h2>Feed</h2>
             <table class="table">
                 <tr>
-                    <td><label for="title">제목:</label></td>
-                    <td><input type="text" id="title" name="title" class="add__container-form__input" required></td>
+                    <td><label for="title">제목:</label>
+                    <input type="text" id="title" name="title" class="add__container-form__input" required></td>
                 </tr>
-
                 <tr>
-                    <td><label for="writetime">작성 시간:</label></td>
-                    <td><input type="datetime-local" id="writetime" name="writetime" class="add__container-form__input" required></td>
-                </tr>
-
-                <tr>
-                    <td>
-					<img src="" class="add__container-form__img"
-					   onerror="this.src='image/1.jpg'">
-					   
+                    <td>					   
 					<select class="add__container-form__input" name="photo" id="photo">
 						<option value="no">사진 없음</option>
 						<%
@@ -82,20 +75,19 @@
 					<script type="text/javascript">
 						$("#photo").change(function(){
 							let src=$(this).val();
-							$(".photo").attr("src",src);
+							$(".add__container-form__img").attr("src",src);
 						});
 					</script>
 				</td>
                 </tr>
-
                 <tr>
-                    <td><label for="tag">태그:</label></td>
-                    <td><input type="text" id="tag" name="tag" class="add__container-form__input" required></td>
+                    <td><label for="tag">태그:</label>
+                    <input type="text" id="tag" name="tag" class="add__container-form__input" required></td>
                 </tr>
 
                 <tr>
-                    <td><label for="text">텍스트:</label></td>
-                    <td><textarea id="text" name="text" class="add__container-form__input" required></textarea></td>
+                    <td><label for="text">텍스트:</label>
+                    <textarea id="text" name="text" class="add__container-form__input" required></textarea></td>
                 </tr>
 
                 <tr>
