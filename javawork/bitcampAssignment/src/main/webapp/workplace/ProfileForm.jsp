@@ -7,7 +7,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html class="html__theme">
+<html>
 <head>
 <meta charset="UTF-8">
 <title>Profile</title>
@@ -24,7 +24,7 @@
         }
     </style>
 </head>
-<body class="profile__body">
+<body class="base__body">
 	<nav class="nav">
 		<ul class="nav__list">
 			<li class="welcome-header__title">INSTAKILOGRAM</li>
