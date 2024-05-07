@@ -27,6 +27,31 @@
             justify-content: center;
             width: 100%;
         }
+        
+        .feed-container {
+	width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.feed {
+	width: 100%;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.feed__image {
+    width: 100%;
+    height: auto;
+}
+
+.feed-info {
+    margin-top: 10px;
+}
+        
     </style>
 </head>
 <body class="base__body">
@@ -62,7 +87,7 @@
         <% } %>
     </div>
 	
-	<div class="main-feed-container">
+	<div class="feed-container">
         <%
         FeedDao feedDao = new FeedDao();
 

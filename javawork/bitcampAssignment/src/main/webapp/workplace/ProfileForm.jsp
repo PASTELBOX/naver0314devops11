@@ -66,14 +66,16 @@
             for (ProfileDto profile : profileList) {
         %>
             <div class="profile-info">
-                <img src="<%= profile.getProfilephoto() %>" class="profile-photo">
-                <div class="profile-details">
-                    <h3><%= profile.getName() %></h3>
-                    <p>Email: <%= profile.getEmail() %></p>
-                    <p>Username: <%= profile.getUsername() %></p>
-                    <p>Introduction: <%= profile.getIntroduce() %></p>
-                </div>
-            </div>
+    <a href="UpdateForm.jsp?username=<%= profile.getUsername() %>">
+        <img src="<%= profile.getProfilephoto() %>" class="profile-photo" alt="<%= profile.getName() %>'s Profile Photo">
+    </a>
+    <div class="profile-details">
+        <h3><%= profile.getName() %></h3>
+        <p>Email: <%= profile.getEmail() %></p>
+        <p>Username: <%= profile.getUsername() %></p>
+        <p>Introduction: <%= profile.getIntroduce() %></p>
+    </div>
+</div>
         <% 
             }
         } else { 
@@ -84,7 +86,7 @@
         %>
     </div>
 
-    <div class="profile-feed-container">
+    <div class="feed-container">
         <%
         FeedDao feedDao = new FeedDao();
         List<FeedDto> feeds = feedDao.getFeedDatas();

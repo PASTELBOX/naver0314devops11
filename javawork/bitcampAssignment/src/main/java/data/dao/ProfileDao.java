@@ -49,17 +49,15 @@ public class ProfileDao {
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		
-		String sql="update profile set name=?,email=?,username=?,password=?,introduce=?,profilephoto=?";
+		String sql="update profile set name=?,email=?,introduce=?,profilephoto=?";
 		conn=connect.getConnection();
 		try {
 			pstmt=conn.prepareStatement(sql);
 			
 			pstmt.setString(1, dto.getName());
 			pstmt.setString(2, dto.getEmail());
-			pstmt.setString(3, dto.getUsername());
-			pstmt.setString(4, dto.getPassword());
-			pstmt.setString(5, dto.getIntroduce());
-			pstmt.setString(6, dto.getProfilephoto());
+			pstmt.setString(3, dto.getIntroduce());
+			pstmt.setString(4, dto.getProfilephoto());
 			
 			pstmt.executeUpdate();
 			
