@@ -86,11 +86,9 @@
 
     <div class="feed-container">
         <%
-        // FeedDao를 사용하여 사용자의 피드 목록을 가져옵니다.
         FeedDao feedDao = new FeedDao();
         List<FeedDto> feeds = feedDao.getFeedDatas();
-
-        // 피드 목록을 출력합니다.
+		
         for (FeedDto feed : feeds) {
             %>
             <div class="feed">

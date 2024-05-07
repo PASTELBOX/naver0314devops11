@@ -19,5 +19,4 @@
 	dao.insertProfile(dto);
 	
 	response.sendRedirect("LoginForm.jsp");
-	
 %>

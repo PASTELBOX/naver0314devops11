@@ -34,6 +34,8 @@ public class ProfileDao {
 			pstmt.setString(4, dto.getPassword());
 			pstmt.setString(5, dto.getIntroduce());
 			pstmt.setString(6, dto.getProfilephoto());
+			
+			pstmt.execute();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -84,10 +86,10 @@ public class ProfileDao {
 			while(rs.next()) {
 				ProfileDto dto=new ProfileDto();
 				
-				dto.setPnum(rs.getString("pnum"));
+				dto.setPnum(rs.getString("num"));
 				dto.setName(rs.getString("name"));
 				dto.setEmail(rs.getString("email"));
-				dto.setUsername(rs.getString("usernmae"));
+				dto.setUsername(rs.getString("username"));
 				dto.setPassword(rs.getString("password"));
 				dto.setIntroduce(rs.getString("introduce"));
 				dto.setProfilephoto(rs.getString("profilephoto"));				
