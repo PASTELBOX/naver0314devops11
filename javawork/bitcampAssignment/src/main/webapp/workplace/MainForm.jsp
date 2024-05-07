@@ -20,6 +20,13 @@
             font-family: "Lobster", sans-serif;
             font-size: 20px;
         }
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
     </style>
 </head>
 <body class="base__body">
@@ -55,7 +62,7 @@
         <% } %>
     </div>
 	
-	<div class="feed-container">
+	<div class="main-feed-container">
         <%
         FeedDao feedDao = new FeedDao();
 

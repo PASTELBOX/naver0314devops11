@@ -1,0 +1,22 @@
+.add__container-form table {
+    width: 100%;
+    background-color: black;
+    color: white;
+    border-collapse: collapse;
+    border: none;
+    margin-left:50px;
+}
+
+.add__container-form table th, 
+.add__container-form table td {
+    padding: 10px;
+    border: none;
+}
+
+.add__container-form table th {
+    background-color: #333;
+}
+
+.add__container-form table tr:nth-child(even) {
+    background-color: #444;
+}

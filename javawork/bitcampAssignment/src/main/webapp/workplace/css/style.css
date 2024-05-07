@@ -7,8 +7,10 @@
 
 @import "../components/nav-bar.css";
 @import "../components/top-bar.css";
-@import "../components/feed-container.css";
+@import "../components/main-feed-container.css";
+@import "../components/profile-feed-container.css";
 @import "../components/base-body.css";
+@import "../components/table-container.css";
 
 @import "./LoginForm.css";
 @import "./RegistForm.css";

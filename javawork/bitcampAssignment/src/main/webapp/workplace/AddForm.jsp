@@ -56,8 +56,8 @@
         <img src="" class="add__container-form__img"
 		onerror="this.src='image/1.jpg'">
         <form action="AddAction.jsp" method="post" class="add__container-form">
-        <h2>Feed</h2>
-            <table class="table">
+        <h2 style="margin :50px;">Add Feed</h2>
+            <table>
                 <tr>
                     <td><label for="title">제목:</label>
                     <input type="text" id="title" name="title" class="add__container-form__input" required></td>
@@ -91,7 +91,6 @@
                 </tr>
 
                 <tr>
-                    <td></td>
                     <td><button type="submit" class="btn btn-primary">등록</button></td>
                 </tr>
             </table>

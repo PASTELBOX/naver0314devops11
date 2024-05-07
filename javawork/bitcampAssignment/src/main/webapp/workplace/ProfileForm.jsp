@@ -84,7 +84,7 @@
         %>
     </div>
 
-    <div class="feed-container">
+    <div class="profile-feed-container">
         <%
         FeedDao feedDao = new FeedDao();
         List<FeedDto> feeds = feedDao.getFeedDatas();

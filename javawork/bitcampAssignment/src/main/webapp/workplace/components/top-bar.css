@@ -1,4 +1,4 @@
-.top-bar {
+/*.top-bar {
 	width: calc(100% - 200px);
     margin-left: 200px;
     padding: 10px;
@@ -13,4 +13,27 @@
     width: 56px;
     height: 56px;
     border-radius: 28px;
+}
+*/
+
+.top-bar {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+	background-color: black;
+}
+
+.top-bar__list {
+	display: flex;
+    gap: 10px;
+}
+
+.top-bar__link {
+	display: flex;
+    align-items: center;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
 }

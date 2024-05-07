@@ -19,23 +19,3 @@
 .add__container-form__input textarea {
 	height: 100px;
 }
-
-table {
-    width: 100%;
-    background-color: black;
-    color: white;
-    border-collapse: collapse;
-}
-
-table th, table td {
-    padding: 10px;
-    border: 1px solid white;
-}
-
-table th {
-    background-color: #333;
-}
-
-table tr:nth-child(even) {
-    background-color: #444;
-}
