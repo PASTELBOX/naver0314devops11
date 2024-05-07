@@ -14,25 +14,36 @@
         body *{
             font-family: 'Jua';
         }
+        
+        div.loginform{
+        	position: absolute;
+        	left:50%;
+        	top:50%;
+        	transform:translate(-50%,-50%);
+        }
+        
+        div.successpage{
+        	margin: 30px;
+        	border: 5px groove gold;
+        	padding: 10px;
+        	width: 600px;
+        }
     </style>
 </head>
+<%
+	String loginok=(String)session.getAttribute("loginok");//해당세션이 없을경우 null
+%>
 <body>
-<ul>
-	<li>
-		<a href="./gisa1.jsp">
-		정부 "비상진료 건강보험 지원 한달 더 연장…상황 장기화 대비"
-		</a>
-	</li>
-	<li>
-		<a href="./gisa2.jsp">
-		'나는솔로' 16기 영숙, 민희진 패러디?…끝나지 않은 상철 저격
-		</a>
-	</li>
-	<li>
-		<a href="./gisa3.jsp">
-		송가인, "성공=복수" 의미심장…"몸매 안 되니까 노래" 무명 설움 재조명 [엑's 이슈]
-		</a>
-	</li>
-</ul>
+<%
+	if(loginok==null){%>
+	  <div class="loginform">
+		<jsp:include page="loginform.jsp"/>
+	  </div>
+	<%}else{%>
+	   <div class="successpage">
+	   	<jsp:include page="successpage.jsp"/>
+	   </div>		
+	<%}
+%>
 </body>
 </html>

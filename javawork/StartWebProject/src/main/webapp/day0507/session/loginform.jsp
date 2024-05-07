@@ -17,22 +17,34 @@
     </style>
 </head>
 <body>
-<ul>
-	<li>
-		<a href="./gisa1.jsp">
-		정부 "비상진료 건강보험 지원 한달 더 연장…상황 장기화 대비"
-		</a>
-	</li>
-	<li>
-		<a href="./gisa2.jsp">
-		'나는솔로' 16기 영숙, 민희진 패러디?…끝나지 않은 상철 저격
-		</a>
-	</li>
-	<li>
-		<a href="./gisa3.jsp">
-		송가인, "성공=복수" 의미심장…"몸매 안 되니까 노래" 무명 설움 재조명 [엑's 이슈]
-		</a>
-	</li>
-</ul>
+<form action="./loginaction.jsp" method="post">
+	<table class="table table-bordered" style="width:250px;">
+		<caption align="top">
+			<b>회원 로그인</b>
+			<label>
+				<input type="checkbox" name="save" 
+				style="margin-left: 50px;">아이디저장
+			</label>
+		</caption>
+		<tr>
+			<th width="100" class="table-success">아이디</th>
+			<td>
+				<input type="text" name="myid" class="form-control">
+			</td>
+		</tr>
+		<tr>
+			<th width="100" class="table-success">비밀번호</th>
+			<td>
+				<input type="password" name="mypass" class="form-control">
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">
+				<button type="submit" class="btn btn-outline-danger">
+				회원로그인</button>
+			</td>
+		</tr>
+	</table>
+</form>
 </body>
 </html>

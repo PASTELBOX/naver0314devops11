@@ -1,23 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Dancing+Script:wght@400..700&family=East+Sea+Dokdo&family=Jua&family=Gaegu&family=Gamja+Flower&family=Pacifico&family=Single+Day&display=swap" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-    <style>
-        body *{
-            font-family: 'Jua';
-        }
-    </style>
-
-</head>
-<body>
+<%
+	//브라우저에 저장된 쿠키들을 얻는다
+	Cookie []cookies=request.getCookies();
+	//여러 쿠키중 amho를 찾아 유지시간을 0으로 만들어서 다시 브라우저에 추가한다
+	if(cookies!=null){
+		for(Cookie ck : cookies){
+			if(ck.getName().equals("amho")){
+				ck.setMaxAge(0);
+				ck.setPath("/");
+				response.addCookie(ck);
+				break;
+			}
+		}
+	}
 	
-</body>
-</html>
+	//다시 메인으로 이동
+	response.sendRedirect("cookiemain.jsp"); 
+%>

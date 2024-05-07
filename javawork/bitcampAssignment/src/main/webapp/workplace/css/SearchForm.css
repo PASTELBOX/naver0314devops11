@@ -1,5 +1,7 @@
 .search__body {
 	width : 100%;
+	background-color : black;
+	color:white;
 }
 .search-bar {
 	display:flex;

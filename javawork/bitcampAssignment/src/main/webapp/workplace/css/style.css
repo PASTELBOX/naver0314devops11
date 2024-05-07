@@ -8,6 +8,7 @@
 @import "../components/nav-bar.css";
 @import "../components/top-bar.css";
 @import "../components/feed-container.css";
+@import "../components/html-theme.css";
 
 @import "./LoginForm.css";
 @import "./RegistForm.css";

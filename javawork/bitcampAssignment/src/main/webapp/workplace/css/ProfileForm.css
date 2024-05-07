@@ -1,5 +1,7 @@
 .profile__body {
 	width : 100%;
+	background-color : black;
+	color:white;
 }
 
 .profile-container {

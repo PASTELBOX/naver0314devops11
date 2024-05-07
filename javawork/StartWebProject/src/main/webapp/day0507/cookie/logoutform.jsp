@@ -18,6 +18,9 @@
 
 </head>
 <body>
-	
+	<button type="button" class="btn btn-sm btn-danger"
+	onclick="location.href='./logoutaction.jsp'"
+	style="margin-left:200px;">
+	로그아웃</button>
 </body>
 </html>

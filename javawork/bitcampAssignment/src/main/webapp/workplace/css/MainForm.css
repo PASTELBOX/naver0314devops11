@@ -1,5 +1,7 @@
 .main__body{
 	width : 100%;
+	background-color : black;
+	color:white;
 }
 .post {
     width: 30%;

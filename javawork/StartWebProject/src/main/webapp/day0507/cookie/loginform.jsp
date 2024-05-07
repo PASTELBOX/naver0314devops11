@@ -18,6 +18,11 @@
 
 </head>
 <body>
-	
+	<form action="./loginaction.jsp" method="post">
+	<h5>기사를 보려면 먼저 암호를 입력하세요</h5>
+	<b>암호 : </b>
+	<input type="password" name="amho">
+	<button type="submit" style="margin-left : 10px;">확인</button>
+	</form>
 </body>
 </html>

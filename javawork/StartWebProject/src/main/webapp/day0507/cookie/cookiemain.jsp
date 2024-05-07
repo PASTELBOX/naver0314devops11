@@ -17,7 +17,30 @@
     </style>
 
 </head>
+<%
+	//amho 라는 쿠키가 있으면 true,없으면 false
+	boolean findAmho=false;
+	Cookie []cookies=request.getCookies();
+	if(cookies!=null)
+	{
+		for(Cookie ck:cookies){
+			String name=ck.getName();
+			if(name.equals("amho")){
+				findAmho=true;
+				break;
+			}				
+		}
+	}
+%>
 <body>
-	
+	<%
+	if(findAmho){%>
+		<jsp:include page="logoutform.jsp"/>
+	<%}else{%>
+		<jsp:include page="loginform.jsp"/>
+	<%} %>
+	<hr>
+	<h3>오늘의 주요 기사들</h3>
+	<jsp:include page="paper.jsp"/>
 </body>
 </html>
