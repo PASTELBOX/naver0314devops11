@@ -123,7 +123,22 @@ function list3(){
 		dataType:"xml",
 		url:"./data/sawonxmldata.jsp",
 		success:function(data){
-			
+			$(data).find("sawon").each(function(idx,ele){
+				let s="<div class='list3'>";
+				let name=$(this).find("name").text();
+				let buseo=$(this).find("buseo").text();
+				let age=$(this).find("age").text();
+				let gender=$(this).find("gender").text();
+				let ipsaday=$(this).find("birthday").text();
+				let addr=$(this).find("addr").text();
+				
+				s+=
+					`
+					${name},${buseo},${age},${gender},${addr},${ipsaday}
+					`;
+				s+="</div>";
+				$("div.result").append(s);
+			});
 		}
 	});
 }
