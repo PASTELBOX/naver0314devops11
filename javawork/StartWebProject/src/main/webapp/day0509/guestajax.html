@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html>	
 <html>
 <head>
 <meta charset="UTF-8">
@@ -87,7 +87,7 @@
     			if(a){
     				$.ajax({
     					type:"get",
-    					dataTyape:"html",
+    					dataType:"html",
     					url:"./data/deletedata.jsp",
     					data:{"num":num},
     					success:function(){
@@ -126,6 +126,7 @@
 
     		    $.ajax({
     		        type: "post",
+    		        dataType:"html",
     		        url: "./data/update.jsp",
     		        data: {"num": num, "nickname": nickname, "content": content},
     		        success: function() {
