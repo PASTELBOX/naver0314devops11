@@ -54,14 +54,40 @@
 				<th class="table-success" width=100>아바타</th>
 				<td>
 					<!--확인후 hidden 으로 수정할것임 -->
-					<input type="text" name="avata" id="avata" value="1">
+					<input type="hidden" name="avata" id="avata" value="1">
 					<!-- 아바타 클릭시 1~10 사이 숫자가 hidden 에 들어가도록 제이쿼리로 코딩 -->
 					<c:forEach var="a" begin="1" end="10">
+						<c:if test="${a==6}"><br></c:if>
+						
 						<img src="../image/s${a}.JPG"
 						width="40" height="40" border="1"
 						class="avata" style="cursor: pointer;"
 						n="${a}">
 					</c:forEach>
+				</td>
+			</tr>
+			<tr>
+				<th class="table-success" width=100>제목</th>
+				<td>
+					<input type="text" class="form-control"
+					name="subject" required="required">
+				</td>
+			</tr>
+			<tr>
+				<th class="table-success" width=100>내용</th>
+				<td>
+					<textarea style="width: 100%;height: 120px;"
+					name="content" required="required"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<button type="submit"  
+					class="btn btn-sm btn-success">게시글저장</button>
+					
+					<button type="button"  
+					class="btn btn-sm btn-success"
+					onclick="history.back()">이전으로</button>
 				</td>
 			</tr>
 		</table>

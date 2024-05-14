@@ -19,6 +19,6 @@
     </style>
 </head>
 <body>
-detail
+
 </body>
 </html>
