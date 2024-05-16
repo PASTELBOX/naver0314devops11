@@ -30,6 +30,7 @@ public class HomeController {
 		ShopDto dto2=new ShopDto("¸Ó¸®²ö","26.jpg", 9000, 5);
 		
 		model.addAttribute("dto1", dto1);
+		
 		model.addAttribute("dto2", dto2);
 		
 		System.out.println(dto1.toString());
