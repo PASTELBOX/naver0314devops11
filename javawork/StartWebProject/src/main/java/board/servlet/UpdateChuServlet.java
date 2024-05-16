@@ -10,29 +10,38 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import data.dao.SimpleBoardDao;
-import data.dto.SimpleBoardDto;
 
-@WebServlet("/board/updateform")
-public class UpdateFormServlet extends HttpServlet {
-
-	SimpleBoardDao dao=new SimpleBoardDao();
+/**
+ * Servlet implementation class UpdateChuServlet
+ */
+@WebServlet("/board/updatechu")
+public class UpdateChuServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 	
+	SimpleBoardDao dao=new SimpleBoardDao();
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//num,currentPage 를 읽는다
+		//num을 읽기
 		int num=Integer.parseInt(request.getParameter("num"));
-		int currentPage=Integer.parseInt(request.getParameter("currentPage"));
-		//dto 가져오기
-		SimpleBoardDto dto=dao.getData(num);
 		
-		//request 에 저장
-		request.setAttribute("dto", dto);
-		request.setAttribute("currentPage", currentPage);//최종수정후 상세페이지로 이동시 필요함
-
-		RequestDispatcher rd=request.getRequestDispatcher("../day0514/updateform.jsp");
+		//dao의 chu update
+		dao.updateChu(num);
+		
+		//update된 chu 값 얻기
+		int chu=dao.getData(num).getChu();
+		
+		//json 형식으로 문자열을 만든다
+		//{"chu":5}
+		String s="{\"chu\":"+chu+"}";
+		
+		//request에 담기
+		request.setAttribute("s", s);
+		
+		//jsonchu.jsp로 포워드
+		RequestDispatcher rd=request.getRequestDispatcher("../day0514/jsonchu.jsp");
 		rd.forward(request, response);
 	}
-
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
