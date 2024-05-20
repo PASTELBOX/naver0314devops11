@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Data	
 public class ShopDto {
 	private String sang;
 	private int su;
