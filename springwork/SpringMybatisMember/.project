@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>SpringMvcEx2</name>
+	<name>SpringMybatisMember</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -46,7 +46,7 @@
 	</natures>
 	<filteredResources>
 		<filter>
-			<id>1716263315948</id>
+			<id>1716263315877</id>
 			<name></name>
 			<type>30</type>
 			<matcher>
