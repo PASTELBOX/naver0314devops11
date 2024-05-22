@@ -8,9 +8,16 @@
 		select count(*) from memberdb where myid=#{searchid}
 	</select>
 	<insert id="insertMember" parameterType="MemberDto">
-		insert into memberdb (name,myid,passwd,addr,hp,email,photo,birthday,gaipday) values (#{name},#{myid},#{passwd},#{addr},#{hp},#{email},#{photo},#{birthday},now())
+		insert into memberdb (name,myid,passwd,addr,hp,email,photo,birthday,gaipday)
+		values (#{name},#{myid},#{passwd},#{addr},#{hp},#{email},#{photo},#{birthday},now())
 	</insert>
 	<select id="selectAllMembers" resultType="MemberDto">
 		select * from memberdb order by num
 	</select>
+	<select id="selectByNumData" parameterType="int" resultType="MemberDto">
+		select * from memberdb where num=#{num}
+	</select>
+	<update id="updatePhoto" parameterType="Map">
+		update memberdb set photo=#{photo} where num=#{num}
+	</update>
 </mapper>

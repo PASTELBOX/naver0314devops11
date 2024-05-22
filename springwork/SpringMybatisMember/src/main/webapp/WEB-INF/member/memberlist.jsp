@@ -59,23 +59,24 @@
 					상세보기
 				</td>
 			</tr>
-			<c:forEach var="member" items="${list}">
+			<c:forEach var="dto" items="${list}">
 				<tr class="member_list-body">
 					<td>
-						${member.num}
+						${dto.num}
 					</td>
 					<td>
-						<img src="../image/${member.photo}" style="border-radius : 50%; width:50px; height:50px; background-color:black;">
-						${member.name}
+						<img src="../image/${dto.photo}" style="border-radius : 50%; width:50px; height:50px; background-color:black;">
+						${dto.name}
 					</td>
 					<td>
-						${member.myid}
+						${dto.myid}
 					</td>
 					<td>
-						${member.hp}
+						${dto.hp}
 					</td>
 					<td>
-						<button type="submit" class="btn btn-sm btn-success">Detail</button>
+						<button type="button" class="btn btn-sm btn-success"
+						onclick="location.href='./detail?num=${dto.num}'">Detail</button>
 					</td>
 				</tr>
 			</c:forEach>

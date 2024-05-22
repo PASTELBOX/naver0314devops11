@@ -1,17 +1,23 @@
 package member.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import member.dto.MemberDto;
 
 @Repository
+@RequiredArgsConstructor
 public class MemberDao {
 	
-	@Autowired
+	//@Autowired
+	
+	@NonNull
 	private SqlSession session;
 	
 	private String namespace="member.dao.MemberDao.";
@@ -34,6 +40,16 @@ public class MemberDao {
 	public List<MemberDto> getAllMembers()
 	{
 		return session.selectList(namespace+"selectAllMembers");
+	}
+	
+	public MemberDto getData(int num)
+	{
+		return session.selectOne(namespace+"selectByNumData", num);
+	}
+
+	public void updatePhoto(Map<String, Object> map)
+	{
+		session.update(namespace+"updatePhoto", map);
 	}
 	
 }

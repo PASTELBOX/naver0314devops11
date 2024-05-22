@@ -48,8 +48,8 @@ public class HomeController{
 	{
 		return "start";
 	}
-	//Model 에 데이타를 저장하고 포워드 파일명을 리턴하는 두가지 방법
 	
+	//Model 에 데이타를 저장하고 포워드 파일명을 리턴하는 두가지 방법	
 	
 	@GetMapping("/board/list") //board/list.do 도 해당 메서드가 호출
 	//@GetMapping("/board/list.do") //이경우는 /board/list.do 라고 정확히 써야만 호출

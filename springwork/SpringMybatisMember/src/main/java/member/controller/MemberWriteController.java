@@ -24,7 +24,6 @@ import member.service.MemberService;
 @Controller
 @RequestMapping("/member")
 public class MemberWriteController {
-	
 	@Autowired
 	private MemberService memberService;
 	
@@ -42,7 +41,7 @@ public class MemberWriteController {
 			)
 	{
 		Map<String, Integer> map=new HashMap<>();
-		//db에 해당 아이디가 있는지 체크(0:없음,1:있음)
+		//db 에 해당 아이디가 있는지 체크(0:없음,1:있음)
 		int count=memberService.getSearchId(searchid);
 		map.put("count", count);
 		
@@ -54,13 +53,13 @@ public class MemberWriteController {
 			@ModelAttribute MemberDto dto,
 			@RequestParam("myfile") MultipartFile myfile,
 			HttpServletRequest request
-			) 
+			)
 	{
 		//업로드 경로 구하기
 		String uploadPath=request.getSession().getServletContext().getRealPath("/resources");
 		System.out.println(uploadPath);
 		
-		//업로드된 파일명을 dto의 photo에 저장
+		//업로드된 파일명을 dto 의 photo 에 저장
 		String photo=myfile.getOriginalFilename();
 		dto.setPhoto(photo);
 		
@@ -72,7 +71,7 @@ public class MemberWriteController {
 			e.printStackTrace();
 		}
 		
-		//db에 insert
+		//db 에 insert
 		memberService.insertMember(dto);
 		
 		//목록페이지로 이동
