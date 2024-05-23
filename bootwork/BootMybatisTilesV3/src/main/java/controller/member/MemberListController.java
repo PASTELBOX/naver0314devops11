@@ -15,7 +15,7 @@ public class MemberListController {
     @NonNull
     private MemberService memberService;
 
-    @GetMapping({"/","/member/list"})
+    @GetMapping("/member/list")
     public String memberList(Model model)
     {
         int totalCount=memberService.getTotalCount();

@@ -2,6 +2,7 @@
    pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>   
+<%@taglib prefix="tiels" uri="http://tiles.apache.org/tags-tiles"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,5 +20,19 @@
    </style>
 </head>
 <body>
+	<div class="mainlayout">
+		<div>
+			<tiles:insertAttribute name="header"/>
+		</div>
+		<div>
+			<tiles:insertAttribute name="menu"/>
+		</div>
+		<div>
+			<tiles:insertAttribute name="info"/>
+		</div>
+		<div>
+			<tiles:insertAttribute name="main"/>
+		</div>
+	</div>
 </body>
 </html>

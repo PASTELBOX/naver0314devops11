@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan({"*.member","data.*"})
+@ComponentScan({"*.member","data.*","tiles.config"})
 @MapperScan("data.mapper")
 public class BootMybatisTilesV3Application {
 

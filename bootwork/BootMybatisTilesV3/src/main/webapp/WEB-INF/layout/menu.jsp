@@ -19,5 +19,14 @@
    </style>
 </head>
 <body>
+<c:set var="root" value=<%=request.getContextPath()%>/>
+<a href="${root}">홈</a>
+&nbsp;
+<a href="${root}/member/list">회원목록</a>
+&nbsp;
+<a href="${root}/board/list">게시판</a>
+&nbsp;
+<a href="${root}/guest/list">방명록</a>
+&nbsp;
 </body>
 </html>
