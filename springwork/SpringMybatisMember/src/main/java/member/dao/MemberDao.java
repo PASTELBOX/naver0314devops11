@@ -52,4 +52,19 @@ public class MemberDao {
 		session.update(namespace+"updatePhoto", map);
 	}
 	
+	public void updateMember(MemberDto dto)
+	{
+		session.update(namespace+"updateMember",dto);
+	}
+	
+	public boolean isEqualPassCheck(Map<String, Object> map)
+	{
+		int n=session.selectOne(namespace+"equalPassCheck", map);
+		return n==1?true:false;//1이면 비번이 맞은경우니까 true 반환
+	}
+	
+	public void deleteMember(int num)
+	{
+		session.delete(namespace+"deleteMember", num);
+	}
 }

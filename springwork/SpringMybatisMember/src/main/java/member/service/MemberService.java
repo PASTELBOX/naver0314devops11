@@ -50,4 +50,24 @@ public class MemberService {
 		map.put("photo", photo);
 		memberDao.updatePhoto(map);
 	}
+	
+	public void updateMember(MemberDto dto)
+	{
+		memberDao.updateMember(dto);
+	}
+	
+	public boolean isEqualPassCheck(int num,String passwd)
+	{
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("num", num);
+		map.put("passwd", passwd);
+		
+		return memberDao.isEqualPassCheck(map);
+	}
+	
+	public void deleteMember(int num)
+	{
+		memberDao.deleteMember(num);
+	}
+	
 }
