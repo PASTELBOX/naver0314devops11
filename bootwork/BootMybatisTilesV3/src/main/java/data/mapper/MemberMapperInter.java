@@ -1,11 +1,10 @@
 package data.mapper;
 
 import data.dto.MemberDto;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface MemberMapperInter {
@@ -26,4 +25,14 @@ public interface MemberMapperInter {
 
     @Select("select * from memberdb where num=#{num}")
     public MemberDto getData(int num);
+
+    @Update("update memberdb set photo=#{photo} where num=#{num}")
+    public void updatePhoto(Map<String, Object> map);
+
+    @Update("update memberdb set name=#{name},hp=#{hp},email=#{email},addr=#{addr},birthday=#{birthday} where num=#{num}")
+    public void updateMember(MemberDto dto);
+
+    @Delete("delete from memberdb where num=#{num} and passwd=#{passwd}")
+    public int deleteMember(Map<String, Object> map);
+
 }

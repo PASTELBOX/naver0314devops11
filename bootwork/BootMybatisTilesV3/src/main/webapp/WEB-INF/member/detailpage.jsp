@@ -40,7 +40,7 @@
                success:function(data){
                   //스프링에서 {"photoname":"파일명"} 이렇게 보낼것임
                   //프로필 사진 변경(db 변경후 업로드된 사진파일명을 반환받은것으로 변경)
-                  $("#photo").attr("src","../image/"+data.photoname);
+                  $("#photo").attr("src","../save/"+data.photoname);
                }
             });
          });
@@ -55,7 +55,8 @@
    <tr>
       <td width="200" align="center">
          <img src="../save/${dto.photo}" id="photo"
-              class="rounded-circle" style="width:150px;border:1px solid black;">
+              class="rounded-circle" style="width:150px;border:1px solid black;"
+               onerror="this.src='../image/noimage1.png'">
          <br><br>
          <input type="file" id="photoupload" style="display: none;">
 
@@ -90,14 +91,7 @@
                  onclick="check(${dto.num})">삭제</button>
 
          <script type="text/javascript">
-            function check(num) {
-               if (confirm("삭제하시겠습니까?")) {
-                  del(num);
-               } else {
-                  alert("삭제 취소");
-               }
-            }
-            function del(num)
+            function check(num)
             {
                //alert(num);
                //비밀버호 입력받기
