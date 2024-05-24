@@ -44,7 +44,7 @@
 		}
 
 		div.mainlayout>div.info{
-			top: 300px;
+			top: 200px;
 			position: absolute;
 		}
 

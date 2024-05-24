@@ -1,5 +1,6 @@
 package data.service;
 
+import data.dto.MemberDto;
 import data.mapper.MemberMapperInter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,5 +18,10 @@ public class MemberService {
     public int getIdCheckCount(String searchid)
     {
         return memInter.getIdCheckCount(searchid);
+    }
+
+    public void insertMember(MemberDto dto)
+    {
+        memInter.insertMember(dto);
     }
 }
