@@ -13,4 +13,9 @@ public class MemberService {
     {
         return memInter.getTotalCount();
     }
+
+    public int getIdCheckCount(String searchid)
+    {
+        return memInter.getIdCheckCount(searchid);
+    }
 }
