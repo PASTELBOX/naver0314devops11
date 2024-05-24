@@ -5,6 +5,8 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import java.util.List;
+
 @Mapper
 public interface MemberMapperInter {
     @Select("select count(*) from memberdb")
@@ -19,4 +21,9 @@ public interface MemberMapperInter {
             """)
     public void insertMember(MemberDto dto);
 
+    @Select("select * from memberdb order by num desc")
+    public List<MemberDto> getAllMembers();
+
+    @Select("select * from memberdb where num=#{num}")
+    public MemberDto getData(int num);
 }

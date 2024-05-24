@@ -19,10 +19,61 @@
    </style>
 </head>
 <body>
-<img src="<%=request.getContextPath()%>/mycar/mycar13.png" width="100">
-
-<h3 class="alert alert-success">
+<h2 class="alert alert-danger" style="width:500px;">
    총 ${totalCount}명의 회원이 있습니다
-</h3>
+   <span style="float:right;">
+			<button type="button" class="btn btn-sm btn-success"
+                    onclick="location.href='./form'">멤버등록</button>
+		</span>
+</h2>
+<form action="./detail" method="post">
+   <table class="table table-bordered">
+      <tr class="table-primary">
+         <td colspan="5">
+            회원명단
+         </td>
+      </tr>
+      <tr class="table-primary">
+         <td>
+            번호
+         </td>
+         <td>
+            회원명
+         </td>
+         <td>
+            아이디
+         </td>
+         <td>
+            핸드폰
+         </td>
+         <td>
+            상세보기
+         </td>
+      </tr>
+      <c:forEach var="dto" items="${list}">
+         <tr class="member_list-body">
+            <td>
+                  ${dto.num}
+            </td>
+            <td>
+               <img src="../save/${dto.photo}" style="border-radius : 50%;
+               width:50px; height:50px; background-color:black;"
+               onerror="this.src='../image/noimage1.png'">
+                  ${dto.name}
+            </td>
+            <td>
+                  ${dto.myid}
+            </td>
+            <td>
+                  ${dto.hp}
+            </td>
+            <td>
+               <button type="button" class="btn btn-sm btn-success"
+                       onclick="location.href='./detail?num=${dto.num}'">Detail</button>
+            </td>
+         </tr>
+      </c:forEach>
+   </table>
+</form>
 </body>
 </html>

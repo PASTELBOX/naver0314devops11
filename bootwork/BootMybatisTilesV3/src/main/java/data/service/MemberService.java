@@ -5,6 +5,8 @@ import data.mapper.MemberMapperInter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MemberService {
     @Autowired
@@ -23,5 +25,15 @@ public class MemberService {
     public void insertMember(MemberDto dto)
     {
         memInter.insertMember(dto);
+    }
+
+    public List<MemberDto> getAllMembers()
+    {
+        return memInter.getAllMembers();
+    }
+
+    public MemberDto getData(int num)
+    {
+        return memInter.getData(num);
     }
 }
