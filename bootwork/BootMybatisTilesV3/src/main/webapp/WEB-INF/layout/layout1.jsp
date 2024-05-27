@@ -20,7 +20,7 @@
 
 		div.mainlayout div{
 			border: 0px solid gray;/* 레이아웃 확인 후 나중에 0으로 변경*/
-			position: absolute;
+			/*position: absolute;*/
 		}
 
 		div.mainlayout>div a{

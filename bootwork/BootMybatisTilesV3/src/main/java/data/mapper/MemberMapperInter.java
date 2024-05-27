@@ -35,4 +35,9 @@ public interface MemberMapperInter {
     @Delete("delete from memberdb where num=#{num} and passwd=#{passwd}")
     public int deleteMember(Map<String, Object> map);
 
+    @Select("""
+            select count(*) from memberdb where myid=#{myid} and passwd=#{pass}
+            """)
+    public int isLoginCheck(String myid, String pass);
+
 }

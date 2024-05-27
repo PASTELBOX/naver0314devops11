@@ -60,4 +60,9 @@ public class MemberService {
         return memInter.deleteMember(map)==1?true:false;
 
     }
+
+    public boolean isLoginCheck(String myid,String pass)
+    {
+        return memInter.isLoginCheck(myid,pass)==1?true:false;
+    }
 }
