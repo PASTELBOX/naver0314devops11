@@ -53,6 +53,8 @@
 			left: 300px;
 			width: 70%;
 			height: auto;
+			margin-left: 300px;
+			margin-top: 50px;
 		}
 	</style>
 </head>

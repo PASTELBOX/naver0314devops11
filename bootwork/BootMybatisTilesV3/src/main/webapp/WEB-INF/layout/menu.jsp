@@ -127,14 +127,16 @@
                     <table class="table table-bordered">
                         <caption align="top">
                             <label>
-                                <input type="checkbox" name="saveid">&nbsp;아이디저장
+                                <input type="checkbox" name="saveid"
+                                ${sessionScope.saveid==null or sessionScope.saveid=='no'?"":"checked"}>&nbsp;아이디저장
                             </label>
                         </caption>
                         <tr>
                             <th class="table-success" width="80">아이디</th>
                             <td>
-                                <input type="text" name="myid" id="myid" class="form-control"
-                                       required="required">
+                                <input type="text" name="loginmyid" id="loginmyid" class="form-control"
+                                required="required"
+                                value="${sessionScope.saveid!=null and sessionScope.saveid=='yes'?sessionScope.loginid:''}">
                             </td>
                         </tr>
                         <tr>
