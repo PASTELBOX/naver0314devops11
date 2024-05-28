@@ -19,7 +19,7 @@
 		}
 
 		div.mainlayout div{
-			border: 0px solid gray;/* 레이아웃 확인 후 나중에 0으로 변경*/
+			/* 레이아웃 확인 후 나중에 0으로 변경*/
 			/*position: absolute;*/
 		}
 
@@ -55,6 +55,10 @@
 			height: auto;
 			margin-left: 300px;
 			margin-top: 50px;
+			/*border: 1px solid gray;
+			display: flex;
+			flex-direction: column;
+			align-items: center;*/
 		}
 	</style>
 </head>
