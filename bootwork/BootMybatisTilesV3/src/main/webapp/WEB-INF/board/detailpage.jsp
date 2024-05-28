@@ -115,10 +115,22 @@
             답글</button>
         <!-- 수정,삭제는 로그인중이며 자기가 쓴글에만 나타나게 하기 -->
         <c:if test="${sessionScope.loginok!=null and sessionScope.loginid==dto.myid}">
-            <button type="button" onclick="location.href=''">수정</button>
-            <button type="button" onclick="location.href=''">삭제</button>
+            <button type="button" onclick="location.href='./updateform?num=${dto.num}&currentPage=${currentPage}'">수정</button>
+            <button type="button" onclick="location.href='./deleteform?num-${dto.num}&currentPage=${currentPage}'">삭제</button>
         </c:if>
+        <button type="button" onclick="location.href='./list?currentPage=${currentPage}'">목록</button>
     </div>
+<script>
+    function del()
+    {
+        let num=#{dto.num};
+        let currentPage=#{currentPage};
+        let a=confirm("정말 삭제하시겠습니까?");
+        if(a){
+            location.href="./delete?num="+num+"&currentPage="+currentPage;
 
+        }
+    }
+</script>
 </body>
 </html>
