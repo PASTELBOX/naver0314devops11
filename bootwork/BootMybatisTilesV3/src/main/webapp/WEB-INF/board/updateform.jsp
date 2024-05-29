@@ -24,6 +24,7 @@
             border: 2px solid gray;
         }
     </style>
+    <c:set var="stpath" value="https://kr.object.ncloudstorage.com/bitcamp-bucket-56/photocommon"/>
     <script>
         $(function(){
             $("#upload").change(function(){
@@ -71,7 +72,7 @@
         <tr>
             <th width="100" class="table-warning">사진</th>
             <td>
-                <img src="../save/${dto.uploadphoto}" id="showimg"
+                <img src="${stpath}/${dto.photo}" id="showimg"
                      onerror="this.src='../image/noimage2.png'">
                 <b>사진을 선택하지 않으면 기존 사진이 유지됩니다</b><br>
                 <input type="file" name="upload" id="upload" class="form-control">
