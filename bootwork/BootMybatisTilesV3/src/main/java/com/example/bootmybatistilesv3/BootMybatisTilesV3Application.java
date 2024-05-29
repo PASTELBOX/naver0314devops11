@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan({"controller.*","*.member","data.*","tiles.config","com.example.demo"})
+@ComponentScan({"controller.*","*.member","data.*","tiles.config","com.example.demo","naver.cloud"})
 @MapperScan("data.mapper")
 public class BootMybatisTilesV3Application {
 
