@@ -18,6 +18,7 @@
       }
    </style>
 </head>
+<c:set var="stpath" value="https://kr.object.ncloudstorage.com/bitcamp-bucket-56/photocommon"/>
 <body>
 <h2 class="alert alert-danger" style="width:500px;">
    총 ${totalCount}명의 회원이 있습니다
@@ -27,15 +28,15 @@
 		</span>
 </h2>
 <!-- admin이 아닌 계정으로 로그인을 했거나 로그인 상태가 아닐경우 보여질 메세지 -->
-<c:if test="${sessionScope.loginok==null or sessionScope.loginid!='admin'}">
+<%--<c:if test="${sessionScope.loginok==null or sessionScope.loginid!='admin'}">
    <h2>
       <b>
          전체 회원 명단은 관리자만 확인 가능합니다
       </b>
    </h2>
-</c:if>
+</c:if>--%>
 <!-- admin 계정으로 로그인시에만 전체 명단을 확인 할 수 있다 -->
-<c:if test="${sessionScope.loginok!=null and sessionScope.loginid=='admin'}">
+<%--<c:if test="${sessionScope.loginok!=null and sessionScope.loginid=='admin'}">--%>
    <table class="table table-bordered">
       <tr class="table-primary">
          <td colspan="5">
@@ -65,7 +66,7 @@
                   ${dto.num}
             </td>
             <td>
-               <img src="../save/${dto.photo}" style="border-radius : 50%;
+               <img src="${stpath}/${dto.photo}" style="border-radius : 50%;
                width:50px; height:50px; background-color:black;"
                onerror="this.src='../image/noimage1.png'">
                   ${dto.name}
@@ -83,6 +84,6 @@
          </tr>
       </c:forEach>
    </table>
-</c:if>
+<%--</c:if>--%>
 </body>
 </html>
