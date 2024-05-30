@@ -1,14 +1,16 @@
 package data.dto;
 
+import java.sql.Timestamp;
+import java.util.List;
+
+import org.apache.ibatis.type.Alias;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.ibatis.type.Alias;
-
-import java.sql.Timestamp;
-import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor

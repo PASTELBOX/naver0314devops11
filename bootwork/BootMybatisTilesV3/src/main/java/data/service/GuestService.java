@@ -1,12 +1,13 @@
 package data.service;
 
-import data.dto.GuestDto;
-import data.dto.GuestPhotoDto;
-import data.mapper.GuestMapperInter;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import data.dto.GuestDto;
+import data.dto.GuestPhotoDto;
+import data.mapper.GuestMapperInter;
 
 @Service
 public class GuestService {
@@ -24,13 +25,14 @@ public class GuestService {
         guestMapper.insertGuestPhoto(dto);
     }
 
-    public List<GuestDto> getAllguest()
+    public List<GuestDto> getAllGuest()
     {
-        return guestMapper.getAllguest();
+        return guestMapper.getAllGuest();
     }
 
     public List<String> getGuestPhoto(int guestidx)
     {
         return guestMapper.getGuestPhoto(guestidx);
     }
+
 }

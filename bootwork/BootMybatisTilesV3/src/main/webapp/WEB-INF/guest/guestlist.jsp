@@ -6,6 +6,8 @@
 <html>
 <head>
    <meta charset="UTF-8">
+   <!-- 10초마다 새로고침 -->
+   <meta http-equiv="Refresh" content="20;url='./list'">
    <title>Insert title here</title>
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -100,7 +102,8 @@
                   if(ele.photos.length>0){
                      $.each(ele.photos,function(i,sphoto){
                         s+=`
-						<img class="small" src="${stpath}/\${sphoto}">
+						<img class="small" src="${stpath}/\${sphoto}"
+						data-bs-toggle="modal" data-bs-target="#myPhotoLargeModal">
 						`;
                      });
                   }
@@ -131,5 +134,31 @@
 <div class="guestlistarea">
    방명록 목록이 나올 영역
 </div>
+
+<!-- 사진 클릭시 Modal -->
+<div class="modal" id="myPhotoLargeModal">
+   <div class="modal-dialog">
+      <div class="modal-content">
+
+         <!-- Modal Header -->
+         <div class="modal-header">
+            <h4 class="modal-title">Modal Heading</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+         </div>
+
+         <!-- Modal body -->
+         <div class="modal-body">
+            Modal body..
+         </div>
+
+         <!-- Modal footer -->
+         <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+         </div>
+
+      </div>
+   </div>
+</div>
+
 </body>
 </html>
