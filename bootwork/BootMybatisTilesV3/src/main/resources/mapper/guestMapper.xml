@@ -13,4 +13,10 @@
         insert into guestphoto (guestidx,photoname)
         values (#{guestidx},#{photoname})
     </insert>
+    <select id="getAllGuest" resultType="GuestDto">
+        select* from guestdb order by guestidx desc
+    </select>
+    <select id="getGuestPhoto" parameterType="int" resultType="String">
+        select photoname from guestphoto where guestidx=#{guestidx}
+    </select>
 </mapper>

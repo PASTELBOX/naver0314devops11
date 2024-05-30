@@ -34,7 +34,8 @@ public class GuestAjaxController {
     @PostMapping("/addguest")
     public void guestInsert(
             @RequestParam String gcontent,
-            @RequestParam("upload") List<MultipartFile> upload,
+            //required = false : null 값일 경우도 값을 받음(원래는 400번 오류난다)
+            @RequestParam(value = "upload",required = false) List<MultipartFile> upload,
             HttpSession session
             )
     {
@@ -77,4 +78,18 @@ public class GuestAjaxController {
 
         }
     }
+
+    @GetMapping("/datas")
+    public List<GuestDto> getList()
+    {
+        List<GuestDto> glist=guestService.getAllguest();
+        //각 방명록글에 첨부된 사진명 photos에 넣기
+        for(GuestDto dto:glist)
+        {
+            dto.setPhotos(guestService.getGuestPhoto(dto.getGuestidx()));
+        }
+        
+        return glist;
+    }
+
 }

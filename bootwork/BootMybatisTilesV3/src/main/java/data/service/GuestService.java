@@ -6,6 +6,8 @@ import data.mapper.GuestMapperInter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class GuestService {
 
@@ -20,5 +22,15 @@ public class GuestService {
     public void insertGuestPhoto(GuestPhotoDto dto)
     {
         guestMapper.insertGuestPhoto(dto);
+    }
+
+    public List<GuestDto> getAllguest()
+    {
+        return guestMapper.getAllguest();
+    }
+
+    public List<String> getGuestPhoto(int guestidx)
+    {
+        return guestMapper.getGuestPhoto(guestidx);
     }
 }
