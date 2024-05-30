@@ -17,8 +17,64 @@
            font-family: 'Jua';
        }
    </style>
+   <script type="text/javascript">
+      $(function (){
+         //방명록 등록 버튼
+         $("#btnaddguest").click(function(){
+            let gcontent=$("#gcontent").val();
+            if(gcontent==''){
+               alert("방명록 글을 작성후 등록해주세요");
+               return;
+            }
+
+            let formData=new FormData();
+            //여러장의 사진들
+            for(let i=0;i<$(#photoupload)[0].files.length;i++)
+            {
+               formData.append("upload",$("#photoupload")[0].files[i]);//선택한 모든 사진들
+            }
+            //내용 등록
+            formData.append("gcontent",gcontent);
+            $.ajax({
+               type:"post",
+               dataType:"text",
+               url:"./addguest",
+               data:formData,
+               processData:false,
+               contentType:false,
+               success:function(){
+                  //성공 후 목록 다시 가져오기
+                  guest_list();
+                  //초기화
+                  $("#gcontent").val("");
+                  $("#photoupload").val("");
+               }
+            });
+         });
+      });//close function
+
+      //목록 출력하는 일반 함수
+      function guest_list()
+      {
+         
+      }
+   </script>
 </head>
 <body>
-방명록목록
+<!-- 방명록 입력은 로그인을 해야만 한다 -->
+<c:if test="${sessionScope.loginok!=null}">
+   <div class="guestformarea" style="width: 400px;">
+      <textarea style="width: 100%;height: 120px;"
+      id="gcontent" class="form-control"></textarea>
+      <br>
+      <input type="file" id="photoupload" multiple="multiple">
+      <button type="button" id="btnaddguest"
+      class="btn btn-sm btn-info">등록</button>
+   </div>
+   <hr>
+</c:if>
+<div class="guestlistarea">
+   방명록 목록이 나올 영역
+</div>
 </body>
 </html>
