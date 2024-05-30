@@ -7,7 +7,7 @@
 <head>
    <meta charset="UTF-8">
    <!-- 10초마다 새로고침 -->
-   <meta http-equiv="Refresh" content="20;url='./list'">
+<%--   <meta http-equiv="Refresh" content="20;url='./list'">--%>
    <title>Insert title here</title>
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -103,7 +103,8 @@
                      $.each(ele.photos,function(i,sphoto){
                         s+=`
 						<img class="small" src="${stpath}/\${sphoto}"
-						data-bs-toggle="modal" data-bs-target="#myPhotoLargeModal">
+						data-bs-toggle="modal" data-bs-target="#myPhotoLargeModal"
+						onclick="large_photo('\${ele.writer}','\${sphoto}')">
 						`;
                      });
                   }
@@ -115,6 +116,13 @@
                $("div.guestlistarea").html(s);
             }
          });
+      }
+
+      //모달창에 제목과 사진출력
+      function large_photo(writer,photoname)
+      {
+         $(".phototitle").text("["+writer+"] 님이 올린 사진입니다");
+         $(".largephoto").attr("src",`${stpath}/\${photoname}`);
       }
    </script>
 </head>
@@ -142,13 +150,13 @@
 
          <!-- Modal Header -->
          <div class="modal-header">
-            <h4 class="modal-title">Modal Heading</h4>
+            <h4 class="modal-title phototitle">제목</h4>
             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
          </div>
 
          <!-- Modal body -->
          <div class="modal-body">
-            Modal body..
+            <img src="" class="largephoto" style="max-width: 100%;">
          </div>
 
          <!-- Modal footer -->
