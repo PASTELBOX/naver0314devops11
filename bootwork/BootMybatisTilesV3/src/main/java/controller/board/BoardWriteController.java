@@ -7,7 +7,6 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import naver.cloud.NcpObjectStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import data.dto.ReBoardDto;
 import data.service.MemberService;
 import data.service.ReBoardService;
+import naver.cloud.NcpObjectStorageService;
 
 @Controller
 @RequestMapping("/board")
@@ -73,29 +73,26 @@ public class BoardWriteController {
             HttpSession session
     )
     {
-//        //업로드할 폴더
-//        String saveFolder=request.getSession().getServletContext().getRealPath("/save");
-//        //업로드하지 않았을경우 "no",업로드했을경우 랜덤파일명으로 저장
-//        String photo=upload.getOriginalFilename();
-//        if(photo.equals("")) {
-//            photo="no";
-//        }else {
-//            //확장자 분리
-//            String ext=photo.split("\\.")[1];
-//            photo=UUID.randomUUID()+"."+ext;
+//		//업로드할 폴더
+//		String saveFolder=request.getSession().getServletContext().getRealPath("/save");
+//		//업로드하지 않았을경우 "no",업로드했을경우 랜덤파일명으로 저장
+//		String photo=upload.getOriginalFilename();
+//		if(photo.equals("")) {
+//			photo="no";
+//		}else {
+//			//확장자 분리
+//			String ext=photo.split("\\.")[1];
+//			photo=UUID.randomUUID()+"."+ext;
 //
-//            //실제 폴더에 업로드
-//            try {
-//                upload.transferTo(new File(saveFolder+"/"+photo));
-//            } catch (IllegalStateException | IOException e) {
-//                // TODO Auto-generated catch block
-//                e.printStackTrace();
-//            }
-//        }
-
-        //스토리지에 업로드하기
+//			//실제 폴더에 업로드
+//			try {
+//				upload.transferTo(new File(saveFolder+"/"+photo));
+//			} catch (IllegalStateException | IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		}
         String photo=storageService.uploadFile(bucketName, folderName, upload);
-
         dto.setUploadphoto(photo);
 
         //세션으로부터 아이디 얻기
@@ -114,7 +111,7 @@ public class BoardWriteController {
 
         //return "redirect:./list?currentPage="+currentPage;
 
-        //추가 후 상세페이지로 이동
+        //추가후 상세페이지로 이동
         return "redirect:./detail?num="+dto.getNum()+"&currentPage="+currentPage;
     }
 }
