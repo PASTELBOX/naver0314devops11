@@ -55,12 +55,22 @@
         #btnansweradd {
 
         }
+
+        div.trans{
+            width: 650px;
+            white-space: pre-wrap; !important;
+            word-wrap: break-word; !important;
+        }
+
     </style>
     <c:set var="stpath" value="https://kr.object.ncloudstorage.com/bitcamp-bucket-56/photocommon"/>
     <script type="text/javascript">
         $(function(){
             //처음 로딩시 댓글 목록 출력
             answer_list();
+
+            //처음 시작시 contetnt 번역
+            trans_content();
 
             //댓글 추가 버튼
             $("#btnansweradd").click(function(){
@@ -102,7 +112,36 @@
                    })
                }
             });
-        });
+        });//close function
+
+        //번역해서 가져오는 함수
+        function trans_content()
+        {
+            //번역할 문장
+            let text=`${dto.content}`;
+            //번역할 언어코드
+            let lang=$("#seltrans").val();
+            console.log(text);
+            console.log(lang);
+
+            $.ajax({
+               type:"post",
+               dataType:"text",
+               url:"./trans",
+               data:{"text":text,"lang":lang},
+               success:function(data){
+                   console.log(data);//json 형식의 문자열
+                   console.log(typeof(data));//string 으로 출력
+                   //string 타입을 json 타입으로 변환
+                   let m=JSON.parse(data);
+                   console.log(typeof(m));//object 라고 나온다
+                   //번역된 텍스트만 추출
+                   let s=m.message.result.translatedText;
+                   console.log(s);
+                   $("#trans_lang").html(s);
+               }
+            });
+        }
 
         function answer_list(){
             let num=${dto.num};
@@ -150,6 +189,20 @@
     </script>
 </head>
 <body>
+<%--<div class="trans">--%>
+<%--    <div class="input-group">--%>
+<%--        <b>번역할 언어 선택</b>--%>
+<%--        <select id="seltrans" class="form-select"--%>
+<%--                style="width: 130px;margin-left: 10px;">--%>
+<%--            <option value="en">영어</option>--%>
+<%--            <option value="ja">일어</option>--%>
+<%--            <option value="zn-CN">중국어</option>--%>
+<%--            <option value="es">스페인어</option>--%>
+<%--        </select>--%>
+<%--        <pre id="trans_lang" style="margin-top: 20px;font-size: 25px;">111</pre>--%>
+<%--    </div>--%>
+<%--</div>--%>
+
 <div class="detail_container">
     <header class="article_header">
         <div class="article_title">
@@ -192,6 +245,19 @@
         </c:if>
         <pre style="font-size: 17px;">${dto.content}</pre>
         <div class="answerlist"></div>
+        <div class="trans">
+            <div class="input-group">
+                <b>번역할 언어 선택</b>
+                <select id="seltrans" class="form-select"
+                        style="width: 130px;margin-left: 10px;">
+                    <option value="en">영어</option>
+                    <option value="ja">일어</option>
+                    <option value="zn-CN">중국어</option>
+                    <option value="es">스페인어</option>
+                </select>
+                <pre id="trans_lang" style="margin-top: 20px;font-size: 25px;">111</pre>
+            </div>
+        </div>
     </div>
     <footer class="comment_container" style="padding: 20px;">
         <c:if test="${sessionScope.loginok!=null}">
